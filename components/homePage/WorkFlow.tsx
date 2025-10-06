@@ -1,13 +1,19 @@
 "use client";
 
 import React from "react";
-import { motion, useInView, AnimatePresence, Variants, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useInView,
+  AnimatePresence,
+  Variants,
+  useReducedMotion,
+} from "motion/react";
 
 type Step = {
   key: string;
   title: string;
   body: string;
-  icon?: React.ReactNode;   // optional emoji/SVG
+  icon?: React.ReactNode; // optional emoji/SVG
 };
 
 const steps: Step[] = [
@@ -61,7 +67,7 @@ export default function WorkFlow() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative w-full bg-foreground text-white">
+    <section className="relative w-full bg-background text-text">
       {/* Header */}
       <motion.div
         variants={fadeUp}
@@ -70,8 +76,12 @@ export default function WorkFlow() {
         viewport={{ once: true, amount: 0.35 }}
         className="text-center pt-16"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">From Dataset to Decisions</h2>
-        <p className="opacity-80 mt-3">Scroll to follow the pipeline. The arrow stays. The story unfolds.</p>
+        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+          From Dataset to Decisions
+        </h2>
+        <p className="opacity-80 mt-3">
+          Scroll to follow the pipeline. The arrow stays. The story unfolds.
+        </p>
       </motion.div>
 
       <div className="mx-auto max-w-7xl px-6 md:px-10 py-16 md:py-24">
@@ -128,9 +138,21 @@ export default function WorkFlow() {
                       <motion.div
                         key={s.key}
                         className="absolute inset-0 border border-white/10 rounded-2xl bg-white/[0.03] p-6 md:p-8"
-                        initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
-                        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-                        exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 1.01 }}
+                        initial={
+                          prefersReducedMotion
+                            ? { opacity: 0 }
+                            : { opacity: 0, scale: 0.98 }
+                        }
+                        animate={
+                          prefersReducedMotion
+                            ? { opacity: 1 }
+                            : { opacity: 1, scale: 1 }
+                        }
+                        exit={
+                          prefersReducedMotion
+                            ? { opacity: 0 }
+                            : { opacity: 0, scale: 1.01 }
+                        }
                         transition={{ duration: 0.45, ease: "easeOut" }}
                       >
                         <motion.div
@@ -140,7 +162,9 @@ export default function WorkFlow() {
                           className="flex items-center gap-3"
                         >
                           <span>{s.icon}</span>
-                          <h3 className="text-2xl md:text-3xl font-bold">{s.title}</h3>
+                          <h3 className="text-2xl md:text-3xl font-bold">
+                            {s.title}
+                          </h3>
                         </motion.div>
 
                         <motion.p
@@ -169,7 +193,10 @@ export default function WorkFlow() {
             {/* Mobile fallback: inline cards */}
             <div className="mt-8 lg:hidden space-y-4">
               {steps.map((s, i) => (
-                <div key={`m-${s.key}`} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <div
+                  key={`m-${s.key}`}
+                  className="rounded-xl border border-white/10 bg-white/[0.03] p-4"
+                >
                   <div className="flex items-center gap-2">
                     <span>{s.icon}</span>
                     <h4 className="font-semibold">{s.title}</h4>

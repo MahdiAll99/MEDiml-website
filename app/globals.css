@@ -1,26 +1,34 @@
 @import "tailwindcss";
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+/* Light mode (default) */
 :root {
   --background: #ffffff;
   --foreground: #00051C;
+  --text:   #1a1a1a;         /* main text color for light mode */
   --primary: #02A2FC;
   --secondary: #1CE723;
-  --red-primary : #F81011 ; 
+  --red-primary: #F81011; 
+   color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-text: var(--text);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --color-red-primary : var(--red-primary) ;
+  --color-red-primary: var(--red-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #00051C;
-    --primary: #02A2FC;
-    --secondary: #1CE723;
-    --red-primary : #F81011 ;
-  }
+
+/* Dark mode */
+.dark {
+  --background: #00051C;   /* dark background */
+  --foreground: #ffffff;   /* UI elements / surfaces */
+  --text: #e5e7eb;         /* light gray text for readability */
+  --primary: #38bdf8;      /* softer blue in dark */
+  --secondary: #22c55e;    /* green that pops on dark */
+  --red-primary: #ef4444;   /* red tuned for dark */
+    color-scheme: dark; 
 }

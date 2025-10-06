@@ -40,21 +40,21 @@ const steps: Step[] = [
     alt: "Metrics comparison",
     color: "bg-yellow-400",
   },
-   {
+  {
     title: "Compare & Evaluate",
     body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
     img: "/images/tutos/configs.png",
     alt: "Metrics comparison",
     color: "bg-yellow-400",
   },
-    {
+  {
     title: "Compare & Evaluate",
     body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
     img: "/images/tutos/checkConfig.png",
     alt: "Metrics comparison",
     color: "bg-yellow-400",
   },
-      {
+  {
     title: "Compare & Evaluate",
     body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
     img: "/images/tutos/results.png",
@@ -73,23 +73,17 @@ export default function ScrollTutorial() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative  container mx-auto w-full text-white">
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
-        className=" text-center"
-      >
-        <h2 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
+    <section className="relative  container mx-auto w-full text-text">
+      <div className=" text-center">
+        <h2 className="text-4xl font-extrabold tracking-tight text-text md:text-5xl">
           From Setup to Breakthroughs
         </h2>
-        <p className="mt-3 text-white font-medium w-full md:w-3/5 mx-auto ">
+        <p className="mt-3 text-text font-medium w-full md:w-3/5 mx-auto ">
           Follow our simple step-by-step process to connect sites securely,
           launch federated training with your preferred strategy, and track
           results in real-time with clear visual insights.
         </p>
-      </motion.div>
+      </div>
       <div className="mx-auto max-w-7xl px-6 md:px-10 py-16 md:py-24">
         <div className="grid lg:grid-cols-12 gap-10">
           {/* LEFT: scroll steps */}
@@ -225,7 +219,9 @@ function StepBlock({
         <div className="flex items-center gap-3 mb-4">
           <span
             className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold
-              ${active ? " text-black" : "bg-white/10 text-white/80"} ${step.color}`}
+              ${active ? " text-black" : "bg-white/10 text-white/80"} ${
+              step.color
+            }`}
           >
             {index + 1}
           </span>

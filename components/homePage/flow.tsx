@@ -1,15 +1,55 @@
 "use client";
 
 import React from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react"; // or: 'framer-motion'
+import {
+  Plug,
+  ShieldCheck,
+  Workflow,
+  PlayCircle,
+  LineChart,
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
 
-const steps = [
-  { title: "Dataset", body: "3D medical images (DICOM/NIfTI)", icon: "🗄️" },
-  { title: "DataManager", body: "Parse scans & extract metadata", icon: "🧰" },
-  { title: "Input", body: "Convert images to binary objects", icon: "🧪" },
-  { title: "Subpackages", body: "Processing, biomarkers, filters…", icon: "🧩" },
-  { title: "Output", body: "Shape / Intensity / Texture", icon: "📈" },
-  { title: "Extras", body: "Cleaning, selection, training", icon: "⚙️" },
+type Step = {
+  title: string;
+  body: string;
+  icon: React.ReactNode;
+  link: string;
+};
+
+const steps: Step[] = [
+  {
+    title: "Connect clients ",
+    body: "Secure Tailscale + WebSocket handshake.",
+    icon: <Plug className="h-7 w-7 text-primary" />,
+    link: "",
+  },
+  {
+    title: "Check compatibility & validate",
+    body: "OS/GPU/dataset checks. Ensure every client is ready.",
+    icon: <ShieldCheck className="h-7 w-7 text-secondary" />,
+    link: "",
+  },
+  {
+    title: "Create your pipelines",
+    body: "Pick models, DP, FL strategy, rounds, and metrics.",
+    icon: <Workflow className="h-7 w-7 text-primary" />,
+    link: "",
+  },
+  {
+    title: "Run & track training",
+    body: "Live rounds, logs, metrics, client statuses.",
+    icon: <PlayCircle className="h-7 w-7 text-secondary" />,
+    link: "",
+  },
+  {
+    title: "Analyze & save results",
+    body: "Compare configs, AUC/ROC, export & archive.",
+    icon: <LineChart className="h-7 w-7 text-primary" />,
+    link: "",
+  },
 ];
 
 export default function Flow() {
@@ -19,55 +59,87 @@ export default function Flow() {
     offset: ["start start", "end end"],
   });
 
-  // arrow progress
-  const arrowX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  // Progress (0 → 100%) for width and arrow left position
+  const progressPct = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative w-full bg-foreground text-white">
-      <div ref={containerRef} className="h-[500vh] relative">
-        {/* Sticky timeline */}
+    <section className="relative w-full bg-background text-text">
+      <div ref={containerRef} className="relative h-[500vh]">
+        {/* Sticky stage */}
         <div className="sticky top-20 h-[70vh] flex flex-col items-center justify-center">
+          <div className="text-center mb-20 ">
+            <h2 className="text-balance text-text text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+              Federated Training in 5 Steps.
+            </h2>
+            <p className="mx-auto text-text mt-3 max-w-3xl text-pretty ">
+              Connect clients, check compatibility, create pipelines, run and
+              track training, then analyze and store your findings—fast and
+              reliable.
+            </p>
+          </div>
           {/* Rail */}
-          <div className="relative w-[80%] h-2 bg-white/10 rounded-full">
+          <div className="relative w-[80%] h-2 rounded-full bg-foreground/10">
+            {/* Fill */}
             <motion.div
-              className="absolute top-0 left-0 h-2 bg-gradient-to-r from-sky-400 via-fuchsia-400 to-amber-300 rounded-full"
-              style={{ width: arrowX }}
+              className="absolute top-0 left-0 h-2 rounded-full bg-gradient-to-r from-primary via-secondary to-red-primary"
+              style={{ width: progressPct }}
             />
-            {/* Arrow */}
+            {/* Arrow — use `left`, not `x` */}
             <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white text-black grid place-items-center shadow"
-              style={{ x: arrowX }}
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-black grid place-items-center shadow"
+              style={{ left: progressPct }}
+              aria-hidden
             >
               ➤
             </motion.div>
           </div>
 
-          {/* Steps row */}
-          <div className="flex gap-6 mt-12 w-[80%] overflow-hidden">
-            {steps.map((s, i) => (
-              <motion.div
-                key={i}
-                style={{
-                  opacity: useTransform(
-                    scrollYProgress,
-                    [i / steps.length, (i + 1) / steps.length],
-                    [0.2, 1]
-                  ),
-                  scale: useTransform(
-                    scrollYProgress,
-                    [i / steps.length, (i + 1) / steps.length],
-                    [0.9, 1]
-                  ),
-                }}
-                className="min-w-[200px] bg-white/[0.05] border border-white/10 rounded-xl p-4"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span>{s.icon}</span>
-                  <h3 className="font-semibold">{s.title}</h3>
-                </div>
-                <p className="text-sm opacity-80">{s.body}</p>
-              </motion.div>
-            ))}
+          {/* Steps */}
+          <div className="mt-12 flex w-[80%] gap-6 overflow-hidden">
+            {steps.map((s, i) => {
+              const start = i / steps.length;
+              const end = (i + 1) / steps.length;
+              const opacity = useTransform(
+                scrollYProgress,
+                [start, end],
+                [0.25, 1]
+              );
+              const scale = useTransform(
+                scrollYProgress,
+                [start, end],
+                [0.95, 1]
+              );
+
+              return (
+                <motion.div
+                  key={i}
+                  style={{ opacity, scale }}
+                  className="min-w-[18%] relative   rounded-xl border border-foreground/10 bg-foreground/[0.04] p-3 backdrop-blur-sm"
+                >
+                  <div className="absolute left-5 top-3 rounded-full bg-red-400  w-3 h-3 text-xs"></div>
+                  <div className="absolute left-9 top-3 rounded-full bg-green-400  w-3 h-3 text-xs"></div>
+                  <div className="absolute left-13 top-3 rounded-full bg-yellow-400  w-3 h-3 text-xs"></div>
+
+                  <div className="mb-4 flex justify-end   items-center gap-2">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-foreground/5">
+                      {s.icon}
+                    </span>
+                  </div>
+                  <div className="flex w-full  flex-col justify-between">
+                    <h3 className="font-semibold mb-2 ">{s.title}</h3>
+                    <p className="text-sm opacity-80">{s.body}</p>
+                    <Link
+                      href={s.link}
+                      className="mt-4 inline-flex justify-center items-center gap-2 hover:bg-primary hover:text-black text-sm rounded-lg px-3 bg-primary/10 py-2 border border-primary/20 text-text  transition"
+                      aria-label={`Open tutorial: ${s.title}`}
+                    >
+                      Read more
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

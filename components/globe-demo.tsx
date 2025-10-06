@@ -2,12 +2,40 @@
 import React from "react";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
 
-const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
-  ssr: false,
-});
+const World = dynamic(
+  () => import("@/components/ui/globe").then((m) => m.World),
+  {
+    ssr: false,
+  }
+);
 
 export default function GlobeDemo() {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+
+  const lightConfig = {
+    pointSize: 4,
+    globeColor: "#ffffff",
+    showAtmosphere: true,
+    atmosphereColor: "#FFFFFF",
+    atmosphereAltitude: 0.1,
+    emissive: "#FFFFFF",
+    emissiveIntensity: 0.1,
+    shininess: 0.9,
+    polygonColor: "rgba(0, 35, 94,0.7)",
+    ambientLight: "#FFFFFF",
+    directionalLeftLight: "#ffffff",
+    directionalTopLight: "#ffffff",
+    pointLight: "#ffffff",
+    arcTime: 1000,
+    arcLength: 0.9,
+    rings: 1,
+    maxRings: 3,
+    initialPosition: { lat: 22.3193, lng: 114.1694 },
+    autoRotate: true,
+    autoRotateSpeed: 0.5,
+  };
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -30,7 +58,8 @@ export default function GlobeDemo() {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  const colors = ["#58E85E", "#3b82f6", "#F6573B" , "#F6D43B" , "#F6D43B" ];
+
   const sampleArcs = [
     {
       order: 1,
@@ -420,8 +449,11 @@ export default function GlobeDemo() {
           </p>
         </motion.div> */}
         {/* <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" /> */}
-        <div className=" w-full -bottom-20  md:h-full z-10">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+        <div className=" w-full  -bottom-20  md:h-full z-10">
+          <World
+            data={sampleArcs}
+            globeConfig={resolvedTheme == "dark" ? globeConfig : lightConfig}
+          />
         </div>
       </div>
     </div>

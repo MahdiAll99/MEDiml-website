@@ -37,10 +37,10 @@ export default function OurTeam({
     <section className="mx-auto max-w-7xl px-2 py-28 md:px-10">
       {/* Heading */}
       <div className="text-center">
-        <h2 className="text-balance text-white text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+        <h2 className="text-balance text-text text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
           Rencontrez notre équipe incroyable.
         </h2>
-        <p className="mx-auto text-white mt-3 max-w-3xl text-pretty ">
+        <p className="mx-auto text-text mt-3 max-w-3xl text-pretty ">
           Nous sommes une équipe d’ingénieurs, de techniciens et de consultants
           passionnés par la performance et la sécurité de vos infrastructures
           IT.

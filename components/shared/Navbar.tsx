@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export type NavLink = { label: string; href: string };
 
@@ -10,11 +11,6 @@ type Props = {
   cta?: { label: string; href: string };
 };
 
-/**
- * NavbarServsi — responsive dark navbar with brand, centered links, and CTA
- * - Matches the provided mock (SERVSI brand + links + green pill CTA)
- * - Sticky, responsive, keyboard-accessible mobile menu
- */
 export default function Navbar({
   links = [
     { label: "Services", href: "/services" },
@@ -28,11 +24,17 @@ export default function Navbar({
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-foreground text-white">
+    <header className="sticky top-0 z-50 w-full bg-background text-text">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
-         <Image src="/medfl_logo.png" width={200} height={50} alt="logo" className="w-15" />
+          <Image
+            src="/medfl_logo.png"
+            width={200}
+            height={50}
+            alt="logo"
+            className="w-15"
+          />
         </Link>
 
         {/* Desktop links */}
@@ -42,7 +44,7 @@ export default function Navbar({
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="rounded px-1 py-1 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40"
+                  className="rounded px-1 py-1 hover:text-white text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40"
                 >
                   {l.label}
                 </Link>
@@ -51,8 +53,9 @@ export default function Navbar({
           </ul>
         </div>
 
-        {/* CTA (desktop) */}
-        <div className="hidden md:block">
+        {/* Right cluster: Theme + CTA (desktop) */}
+        <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <Link
             href={cta.href}
             className="inline-flex items-center justify-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-black shadow ring-1 ring-emerald-500/40 transition hover:brightness-95"
@@ -70,15 +73,12 @@ export default function Navbar({
           onClick={() => setOpen((v) => !v)}
         >
           <span className="sr-only">Toggle menu</span>
-          {/* icon */}
           <svg
             className={`h-5 w-5 ${open ? "hidden" : "block"}`}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           >
             <path d="M3 6h18M3 12h18M3 18h18" />
           </svg>
@@ -88,8 +88,6 @@ export default function Navbar({
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
           >
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
@@ -101,9 +99,14 @@ export default function Navbar({
         id="mobile-menu"
         className={`md:hidden ${
           open ? "block" : "hidden"
-        } border-t border-white/10 bg-foreground`}
+        } border-t border-white/10 bg-background`}
       >
         <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-white/90">
+          {/* Theme toggle at top on mobile */}
+          <li className="flex justify-end">
+            <ThemeToggle />
+          </li>
+
           {links.map((l) => (
             <li key={l.href}>
               <Link
@@ -115,10 +118,10 @@ export default function Navbar({
               </Link>
             </li>
           ))}
-          <li className="mt-2 ">
+          <li className="mt-2">
             <Link
               href={cta.href}
-              className="block mx-auto text-center w-2/3 items-center  justify-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-black shadow ring-1 ring-emerald-500/40"
+              className="block mx-auto text-center w-2/3 items-center justify-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-black shadow ring-1 ring-emerald-500/40"
               onClick={() => setOpen(false)}
             >
               {cta.label}

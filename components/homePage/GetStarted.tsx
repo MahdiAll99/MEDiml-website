@@ -72,14 +72,14 @@ client = FlowerClient(
 client.start()`;
 
   return (
-    <section className="relative w-full  text-white">
+    <section className="relative w-full  text-text">
       <Image
         src={tab == "python" ? "/images/code.png" : "/images/tutos/home.png"}
         width={2050}
         height={2050}
         alt="Medfl"
         className={`absolute top-0 right-0 w-1/2  ${
-          tab == "python" ? "opacity-30" : "opacity-5"
+          tab == "python" ? "opacity-10" : "opacity-5"
         } `}
       />
 
@@ -88,14 +88,14 @@ client.start()`;
         {/* Header */}
         <div className="flex items-start justify-between gap-6 flex-wrap">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs">
+            <div className="inline-flex items-center gap-2 rounded-full border border-foreground/10  bg-foreground/[0.03]  px-3 py-1 text-xs">
               <Rocket className="h-3.5 w-3.5 text-secondary" />
               <span className="text-secondary">Get started</span>
             </div>
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-[1.05]">
               Install, run, and federate in minutes
             </h2>
-            <p className="mt-3 max-w-2xl text-white/80">
+            <p className="mt-3 max-w-2xl text-text/80">
               Use MEDfl as a Python package or install the desktop application.
               Start a server, connect clients, and track federated rounds.
             </p>
@@ -125,7 +125,7 @@ client.start()`;
         </div>
 
         {/* Tabs */}
-        <div className="mt-10 inline-flex rounded-2xl border border-white/10 bg-white/[0.04] p-1">
+        <div className="mt-10 inline-flex rounded-2xl border border-foreground/10  bg-foreground/[0.04]   p-1">
           <TabButton
             active={tab === "python"}
             onClick={() => setTab("python")}
@@ -148,7 +148,7 @@ client.start()`;
               icon={<Terminal className="h-5 w-5" />}
             >
               <CodeBlock lang="bash" code={pipCmd} />
-              <p className="mt-3 text-sm text-white/70">
+              <p className="mt-3 text-sm text-text/70">
                 Requires Python 3.9+. Create a virtual environment for best
                 results.
               </p>
@@ -169,7 +169,7 @@ client.start()`;
             </Card>
 
             <Card title="Next steps" icon={<BookOpen className="h-5 w-5" />}>
-              <ul className="text-sm space-y-2 text-white/80 list-disc pl-5">
+              <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
                 <li>
                   Run the server, then start multiple clients on different
                   machines.
@@ -193,7 +193,7 @@ client.start()`;
                 <LinkBtn href="/download#macos">macOS (.dmg)</LinkBtn>
                 <LinkBtn href="/download#linux">Linux (.AppImage)</LinkBtn>
               </div>
-              <p className="mt-3 text-sm text-white/70">
+              <p className="mt-3 text-sm text-text/70">
                 Check the install guide for first-run permissions and network
                 access.
               </p>
@@ -205,7 +205,7 @@ client.start()`;
             </Card>
 
             <Card title="Run & connect" icon={<Server className="h-5 w-5" />}>
-              <ul className="text-sm space-y-2 text-white/80 list-disc pl-5">
+              <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
                 <li>
                   Launch the MEDfl app and choose <em>Server</em> or{" "}
                   <em>Client</em> mode.
@@ -229,7 +229,7 @@ client.start()`;
               title="Where to next?"
               icon={<BookOpen className="h-5 w-5" />}
             >
-              <ul className="text-sm space-y-2 text-white/80 list-disc pl-5">
+              <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
                 <li>Configure Differential Privacy (NN only) with Opacus.</li>
                 <li>Compare results across runs and export charts.</li>
                 <li>Join us on GitHub for issues and feature requests.</li>
@@ -262,7 +262,7 @@ function CTA({
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.06] px-3 py-2 text-sm hover:bg-white/[0.1] transition"
+      className="inline-flex items-center gap-2 rounded-xl border border-foreground/15   bg-foreground/[0.06]   px-3 py-2 text-sm hover:bg-white/[0.1] transition"
     >
       {icon}
       <span>{children}</span>
@@ -288,7 +288,7 @@ function TabButton({
       ${
         active
           ? "bg-secondary text-black font-medium"
-          : "text-white hover:bg-white/10"
+          : "text-text hover:bg-white/10"
       }`}
     >
       {icon}
@@ -307,12 +307,12 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-4 md:p-5 md:pt-10">
+    <div className="relative rounded-2xl border border-foreground/10  bg-foreground/[0.03]  p-4 md:p-5 md:pt-10">
       <div className="absolute left-5 top-3 rounded-full bg-red-400  w-3 h-3 text-xs"></div>
       <div className="absolute left-9 top-3 rounded-full bg-green-400  w-3 h-3 text-xs"></div>
       <div className="absolute left-13 top-3 rounded-full bg-yellow-400  w-3 h-3 text-xs"></div>
-      <div className="flex items-center gap-2 text-sm text-white/70 mb-3">
-        <div className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white/[0.06] border border-white/10">
+      <div className="flex items-center gap-2 text-sm text-text/70 mb-3">
+        <div className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white/[0.06]   border border-white/10">
           {icon}
         </div>
         <span className="uppercase tracking-wide">{title}</span>
@@ -332,7 +332,7 @@ function SmallLink({
   return (
     <Link
       href={href}
-      className="inline-flex items-center rounded-lg px-2 py-1 text-xs bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] transition"
+      className="inline-flex items-center rounded-lg px-2 py-1 text-xs bg-foreground/[0.06]   border border-foreground/10 hover:bg-white/[0.1] transition"
     >
       {children}
     </Link>

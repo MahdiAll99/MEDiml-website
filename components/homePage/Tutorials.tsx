@@ -51,8 +51,7 @@ const tutorials: Tutorial[] = [
     href: "/docs/tutorials/xgb-client",
     icon: <BarChart3 className="h-5 w-5" />,
   },
- 
- 
+
   {
     title: "Tailscale / LAN Setup",
     description:
@@ -71,9 +70,9 @@ const tutorials: Tutorial[] = [
 
 export default function TutorialsSection() {
   return (
-    <section className="relative w-full  text-white">
+    <section className="relative w-full  text-text">
       {/* soft radial accents */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(900px_450px_at_80%_10%,rgba(59,130,246,0.08),transparent_60%),radial-gradient(700px_350px_at_10%_90%,rgba(6,182,212,0.06),transparent_50%)]" />
+      {/* <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(900px_450px_at_80%_10%,rgba(59,130,246,0.08),transparent_60%),radial-gradient(700px_350px_at_10%_90%,rgba(6,182,212,0.06),transparent_50%)]" /> */}
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24">
         {/* Header */}
         <div className="flex items-start justify-between gap-6 flex-wrap">
@@ -85,7 +84,7 @@ export default function TutorialsSection() {
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-[1.05]">
               Learn by building, step by step
             </h2>
-            <p className="mt-3 max-w-2xl text-white/80">
+            <p className="mt-3 max-w-2xl text-text/80">
               Follow focused, practical guides to get MEDfl running — from pip
               install to multi-site federated training.
             </p>
@@ -114,14 +113,14 @@ export default function TutorialsSection() {
 
 function TutorialCard({ title, description, href, icon }: Tutorial) {
   return (
-    <div className="group relative rounded-2xl border border-white/10 bg-white/[0.03] p-5 pt-10  md:p-6 md:pt-10 transition">
+    <div className="group relative rounded-2xl border  border-foreground/10 bg-foreground/[0.03]  p-5 pt-10  md:p-6 md:pt-10 transition">
       {/* glow on hover */}
-            <div className="absolute left-5 top-3 rounded-full bg-red-400  w-3 h-3 text-xs"></div>
+      <div className="absolute left-5 top-3 rounded-full bg-red-400  w-3 h-3 text-xs"></div>
       <div className="absolute left-9 top-3 rounded-full bg-green-400  w-3 h-3 text-xs"></div>
       <div className="absolute left-13 top-3 rounded-full bg-yellow-400  w-3 h-3 text-xs"></div>
-      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent group-hover:ring-cyan-400/30 group-hover:shadow-[0_0_0_1px_rgba(56,189,248,0.2)] transition" />
+      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent  transition" />
 
-      <div className="flex items-center gap-3 text-sm text-white/70 mb-3">
+      <div className="flex items-center gap-3 text-sm text-text/70 mb-3">
         <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.06] border border-white/10">
           {icon}
         </div>
@@ -129,11 +128,11 @@ function TutorialCard({ title, description, href, icon }: Tutorial) {
       </div>
 
       <h3 className="text-lg md:text-xl font-semibold">{title}</h3>
-      <p className="mt-2 text-sm text-white/75">{description}</p>
+      <p className="mt-2 text-sm text-text/75">{description}</p>
 
       <Link
         href={href}
-        className="mt-4 inline-flex items-center gap-2 text-sm rounded-lg px-3 py-2 bg-white text-black hover:opacity-90 transition"
+        className="mt-4 inline-flex items-center gap-2 hover:bg-primary text-sm rounded-lg px-3 bg-primary/10 py-2 border border-primary/20 text-text  transition"
         aria-label={`Open tutorial: ${title}`}
       >
         Open tutorial
@@ -141,7 +140,12 @@ function TutorialCard({ title, description, href, icon }: Tutorial) {
       </Link>
 
       {/* make whole card clickable (accessible) */}
-      <Link href={href} aria-hidden className="absolute inset-0" tabIndex={-1} />
+      <Link
+        href={href}
+        aria-hidden
+        className="absolute inset-0"
+        tabIndex={-1}
+      />
     </div>
   );
 }

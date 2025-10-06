@@ -33,7 +33,7 @@ export default function CodeBlock({
 
   return (
     <div
-      className={`relative rounded-xl border border-white/10 bg-[#0d1117] ${className}`}
+      className={`relative rounded-xl border border-white/10 dark:bg-black ${className}`}
     >
       {/* Top bar */}
       <div className="flex items-center justify-between px-3 py-2 text-xs uppercase tracking-wide text-white/60 border-b border-white/10">

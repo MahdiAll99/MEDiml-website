@@ -14,6 +14,7 @@ import WorkFlow from "@/components/homePage/WorkFlow";
 import Flow from "@/components/homePage/flow";
 import GetStartedSection from "@/components/homePage/GetStarted";
 import TutorialsSection from "@/components/homePage/Tutorials";
+import { useTheme } from "next-themes";
 
 
 const montserrat = Montserrat({
@@ -23,21 +24,25 @@ const montserrat = Montserrat({
   variable: "--font-montserrat", // Optional: for CSS variables
 });
 export default function Home() {
+    const { theme, setTheme, resolvedTheme } = useTheme();
   return (
-    <div className={`${montserrat.className}  relative bg-foreground`}>
-      <div
+    <div className={`${montserrat.className}  relative bg-background`}>
+         {/* <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-80"
+        className="pointer-events-none absolute inset-0 mix-blend-screen"
         style={{
-          background:
-            "radial-gradient(1200px 600px at 80% 20%, rgba(0,255,153,0.06), transparent 60%), radial-gradient(800px 400px at 10% 90%, rgba(0,255,153,0.04), transparent 50%)",
+          backgroundImage: resolvedTheme == "dark" ? 
+            "linear-gradient(0deg, rgba(255,255,255,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.09) 1px, transparent 1px)" : "linear-gradient(0deg, rgba(0,0,0,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.9) 1px, transparent 1px)" ,
+          backgroundSize: "40px 40px",
+          backgroundPosition: "-1px -1px",
+          opacity: 0.25,
         }}
-      />
+      /> */}
       <HeroSection />
       <ScrollTutorial></ScrollTutorial>
       <OurTeam></OurTeam>
-      {/* <WorkFlow/>
-      <Flow/> */}
+      {/* <WorkFlow/> */}
+      <Flow/>
       <GetStartedSection/>
       <TutorialsSection/>
     </div>

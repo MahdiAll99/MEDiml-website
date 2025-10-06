@@ -12,11 +12,11 @@ export type Partner = {
 
 const DEFAULT_PARTNERS: Partner[] = [
   { name: "AWS", src: "/images/partners/medomics.png", href: "#" },
-  { name: "Azure", src: "/images/partners/udes_white.png", href: "#" },
+  { name: "Azure", src: "/images/partners/udes_1.png", href: "#" },
   { name: "AWS", src: "/images/partners/medomics.png", href: "#" },
-  { name: "Azure", src: "/images/partners/udes_white.png", href: "#" },
+  { name: "Azure", src: "/images/partners/udes_1.png", href: "#" },
   { name: "Dell", src: "/images/partners/mcgill.png", href: "#" },
-  { name: "Dell", src: "/images/partners/udes_white.png", href: "#" },
+  { name: "Dell", src: "/images/partners/udes_1.png", href: "#" },
 ];
 
 export default function PartnersSlider({
@@ -39,12 +39,12 @@ export default function PartnersSlider({
       {/* soft fade edges */}
       <div
         className={`pointer-events-none absolute inset-y-0 z-40 left-0 w-10 bg-gradient-to-r to-transparent opacity-50 ${
-          section == "Hero" ? "from-foreground " : "from-white"
+          section == "Hero" ? "from-background " : "from-white"
         }`}
       />
       <div
         className={`pointer-events-none absolute inset-y-0 z-40 right-0 w-10 bg-gradient-to-l ${
-          section == "Hero" ? "from-foreground " : "from-white"
+          section == "Hero" ? "from-background " : "from-white"
         } to-transparent opacity-50`}
       />
 
@@ -93,7 +93,7 @@ function Logo({
       src={partner.src}
       alt={partner.name}
       className={
-        "h-8 w-auto  object-contain  transition grayscale" +
+        "h-8 w-auto  object-contain  transition grayscale opacity-60" +
         (section == "Hero" ? " md:h-10" : " md:h-18")
       }
       draggable={false}
