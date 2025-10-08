@@ -30,7 +30,7 @@ export default function Home() {
       /> */}
       <HeroSection />
       <ScrollTutorial></ScrollTutorial>
-      <OurTeam></OurTeam>
+      {/* <OurTeam></OurTeam> */}
       {/* <WorkFlow/> */}
       <Flow/>
       <GetStartedSection/>

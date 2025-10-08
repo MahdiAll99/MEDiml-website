@@ -1,67 +1,151 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, PropsWithChildren } from "react";
 import ThemeToggle from "./ThemeToggle";
+import { usePathname } from "next/navigation";
+import { Github } from "lucide-react";
 
-export type NavLink = { label: string; href: string };
+export type NavLink = { label: string; href: string; external?: boolean };
 
 type Props = {
   links?: NavLink[];
-  cta?: { label: string; href: string };
+  cta?: { label: string; href: string; external?: boolean };
+  secondaryCta?: { label: string; href: string; external?: boolean };
 };
+
+function NavA({
+  href,
+  external,
+  className,
+  onClick,
+  children,
+  ...rest
+}: PropsWithChildren<{
+  href: string;
+  external?: boolean;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+}>) {
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={className}
+        onClick={onClick}
+        {...rest}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      onClick={onClick} // ✅ This now works
+      className={className}
+      {...rest}
+    >
+      {children}
+    </Link>
+  );
+}
 
 export default function Navbar({
   links = [
-    { label: "Services", href: "/services" },
-    { label: "Work", href: "/work" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "About", href: "/about" },
-    { label: "Blog", href: "/blogs" },
+    { label: "Docs", href: "/docs/overview" },
+    { label: "Architecture", href: "/docs/real-world" },
+    { label: "Installation", href: "/docs/simulation" },
+    { label: "Tutorials", href: "/docs/pipelines/builder" },
+    { label: "Blogs", href: "/docs/api" },
   ],
-  cta = { label: "Contact us", href: "/contact" },
+  cta = { label: "Quickstart", href: "/docs/quickstart" },
+  secondaryCta = {
+    label: "GitHub",
+    href: "https://github.com/MEDomics-UdeS/MEDfl",
+    external: true,
+  },
 }: Props) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const linkBase =
+    "rounded px-1 py-1 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40";
+  const isActive = (href: string) => href !== "/" && pathname?.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background text-text">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur text-text">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-6">
         {/* Brand */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link
+          href="/"
+          className="flex items-center gap-2"
+          aria-label="MEDfl home"
+        >
           <Image
             src="/medfl_logo.png"
-            width={200}
-            height={50}
-            alt="logo"
-            className="w-15"
+            width={160}
+            height={40}
+            alt="MEDfl logo"
+            className="h-auto w-[70px]"
+            priority
           />
         </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex md:flex-1 md:items-center md:justify-center">
-          <ul className="flex items-center gap-8 text-sm text-white/80">
-            {links.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="rounded px-1 py-1 hover:text-white text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
+          <ul className="flex items-center gap-6 text-sm text-white/80">
+            {links.map((l) => {
+              const active = isActive(l.href);
+              return (
+                <li key={l.href}>
+                  <NavA
+                    href={l.href}
+                    external={l.external}
+                    className={[
+                      linkBase,
+                      active ? "text-white" : "text-text",
+                      active
+                        ? "underline underline-offset-8 decoration-primary/70"
+                        : "hover:text-white",
+                    ].join(" ")}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {l.label}
+                  </NavA>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
-        {/* Right cluster: Theme + CTA (desktop) */}
-        <div className="hidden md:flex items-center gap-2">
+        {/* Right cluster: Theme + CTA(s) (desktop) */}
+        <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
-          <Link
+          {/* Secondary CTA (GitHub) */}
+          {secondaryCta && (
+            <NavA
+              href={secondaryCta.href}
+              external={secondaryCta.external}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 px-3 py-2 text-sm font-semibold text-text transition hover:bg-foreground/10"
+              aria-label={secondaryCta.label}
+            >
+              <Github className="h-4 w-4" />
+              {secondaryCta.label}
+            </NavA>
+          )}
+          {/* Primary CTA */}
+          <NavA
             href={cta.href}
+            external={cta.external}
             className="inline-flex items-center justify-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-black shadow ring-1 ring-emerald-500/40 transition hover:brightness-95"
+            aria-label={cta.label}
           >
             {cta.label}
-          </Link>
+          </NavA>
         </div>
 
         {/* Mobile hamburger */}
@@ -102,30 +186,51 @@ export default function Navbar({
         } border-t border-white/10 bg-background`}
       >
         <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-white/90">
-          {/* Theme toggle at top on mobile */}
-          <li className="flex justify-end">
+          {/* Theme + Secondary at top */}
+          <li className="mb-1 flex items-center justify-between">
             <ThemeToggle />
-          </li>
-
-          {links.map((l) => (
-            <li key={l.href}>
-              <Link
-                href={l.href}
-                className="block rounded-md px-3 text-center py-2 hover:bg-white/5"
+            {secondaryCta && (
+              <NavA
+                href={secondaryCta.href}
+                external={secondaryCta.external}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 px-3 py-2 text-sm transition hover:bg-foreground/10"
                 onClick={() => setOpen(false)}
               >
-                {l.label}
-              </Link>
-            </li>
-          ))}
+                <Github className="h-4 w-4" />
+                {secondaryCta.label}
+              </NavA>
+            )}
+          </li>
+
+          {links.map((l) => {
+            const active = isActive(l.href);
+            return (
+              <li key={l.href}>
+                <NavA
+                  href={l.href}
+                  external={l.external}
+                  className={[
+                    "block rounded-md px-3 py-2",
+                    active ? "bg-white/10 text-white" : "hover:bg-white/5",
+                  ].join(" ")}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {l.label}
+                </NavA>
+              </li>
+            );
+          })}
+
           <li className="mt-2">
-            <Link
+            <NavA
               href={cta.href}
-              className="block mx-auto text-center w-2/3 items-center justify-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-black shadow ring-1 ring-emerald-500/40"
+              external={cta.external}
+              className="mx-auto block w-2/3 items-center justify-center rounded-full bg-secondary px-4 py-2 text-center text-sm font-semibold text-black shadow ring-1 ring-emerald-500/40"
               onClick={() => setOpen(false)}
             >
               {cta.label}
-            </Link>
+            </NavA>
           </li>
         </ul>
       </div>

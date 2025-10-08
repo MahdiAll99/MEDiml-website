@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   motion,
   AnimatePresence,
@@ -9,6 +10,28 @@ import {
   useReducedMotion,
   Variants,
 } from "motion/react";
+import {
+  Plug,
+  ShieldCheck,
+  Network,
+  Workflow,
+  FileCog,
+  BookOpen,
+  Rocket,
+  PlayCircle,
+  LineChart,
+  BarChart3,
+  Play,
+  Github,
+} from "lucide-react";
+
+type Action = {
+  label: string;
+  href: string;
+  icon?: React.ReactNode;
+  variant?: "primary" | "ghost" | "red" | "yellow";
+  aria?: string;
+};
 
 type Step = {
   title: string;
@@ -16,76 +39,231 @@ type Step = {
   img: string; // public path e.g. /images/tutorial/01.png
   alt?: string;
   color: string;
+  icon: React.ReactNode;
+  link?: string; // default/primary link (Guide)
+  actions?: Action[];
 };
 
 const steps: Step[] = [
   {
     title: "Connect Clients Securely",
-    body: "Securely link all clients through Tailscale and WebSockets, ensuring private and seamless communication between participants.",
+    body: "Onboard hospitals via Tailscale VPN and WebSockets. Generate auth keys and scripts, then invite collaborators.",
     img: "/images/tutos/home.png",
     alt: "Onboarding clients",
     color: "bg-red-400",
+    icon: <Plug className="h-5 w-5 text-primary" />,
+    link: "/docs/real-world/connect-clients",
+    actions: [
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <BookOpen className="h-4 w-4" />,
+        variant: "ghost",
+        aria: "Open connect clients guide",
+      },
+      {
+        label: " ",
+        href: "/docs/quickstart#connect",
+        icon: <Play className="h-4 w-4" />,
+        variant: "red",
+        aria: "Open quickstart connect",
+      },
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <Github className="h-4 w-4" />,
+        variant: "primary",
+        aria: "Open connect clients guide",
+      },
+    ],
   },
   {
-    title: "Build your Network",
-    body: "Pick your strategy (FedAvg, XGB Bagging), rounds, and DP settings. Track rounds in real-time.",
+    title: "Build Your Network",
+    body: "Discover available clients, verify socket/VPN status, and select the cohort for training.",
     img: "/images/tutos/network.png",
-    alt: "Training dashboard",
+    alt: "Network assembly",
     color: "bg-green-400",
+    icon: <Network className="h-5 w-5 text-secondary" />,
+    link: "/docs/real-world/network-view",
+    actions: [
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <BookOpen className="h-4 w-4" />,
+        variant: "ghost",
+        aria: "Open connect clients guide",
+      },
+      {
+        label: " ",
+        href: "/docs/quickstart#connect",
+        icon: <Play className="h-4 w-4" />,
+        variant: "red",
+        aria: "Open quickstart connect",
+      },
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <Github className="h-4 w-4" />,
+        variant: "primary",
+        aria: "Open connect clients guide",
+      },
+    ],
   },
   {
-    title: "Compare & Evaluate",
-    body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
+    title: "Validate Compatibility",
+    body: "Run dataset and system checks: schema, columns, nulls, stats, OS/GPU. Be green before you train.",
     img: "/images/tutos/dataStats.png",
-    alt: "Metrics comparison",
+    alt: "Data stats and checks",
     color: "bg-yellow-400",
+    icon: <ShieldCheck className="h-5 w-5 text-primary" />,
+    link: "/docs/real-world/validate-network",
+    actions: [
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <BookOpen className="h-4 w-4" />,
+        variant: "ghost",
+        aria: "Open connect clients guide",
+      },
+      {
+        label: " ",
+        href: "/docs/quickstart#connect",
+        icon: <Play className="h-4 w-4" />,
+        variant: "red",
+        aria: "Open quickstart connect",
+      },
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <Github className="h-4 w-4" />,
+        variant: "primary",
+        aria: "Open connect clients guide",
+      },
+    ],
   },
   {
-    title: "Compare & Evaluate",
-    body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
+    title: "Configure Pipelines",
+    body: "Drag-and-drop nodes (Model, Network, Optimize, Strategy). Toggle DP/TL, set rounds and metrics.",
     img: "/images/tutos/configs.png",
-    alt: "Metrics comparison",
-    color: "bg-yellow-400",
+    alt: "Pipeline builder",
+    color: "bg-blue-400",
+    icon: <Workflow className="h-5 w-5 text-secondary" />,
+    link: "/docs/pipelines/builder",
+    actions: [
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <BookOpen className="h-4 w-4" />,
+        variant: "ghost",
+        aria: "Open connect clients guide",
+      },
+      {
+        label: " ",
+        href: "/docs/quickstart#connect",
+        icon: <Play className="h-4 w-4" />,
+        variant: "red",
+        aria: "Open quickstart connect",
+      },
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <Github className="h-4 w-4" />,
+        variant: "primary",
+        aria: "Open connect clients guide",
+      },
+    ],
   },
   {
-    title: "Compare & Evaluate",
-    body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
+    title: "Review & Launch",
+    body: "Inspect the final configuration, confirm client readiness, then start federated rounds when minimum criteria are met.",
     img: "/images/tutos/checkConfig.png",
-    alt: "Metrics comparison",
-    color: "bg-yellow-400",
+    alt: "Review configuration",
+    color: "bg-purple-400",
+    icon: <PlayCircle className="h-5 w-5 text-primary" />,
+    link: "/docs/run-and-monitor",
+    actions: [
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <BookOpen className="h-4 w-4" />,
+        variant: "ghost",
+        aria: "Open connect clients guide",
+      },
+      {
+        label: " ",
+        href: "/docs/quickstart#connect",
+        icon: <Play className="h-4 w-4" />,
+        variant: "red",
+        aria: "Open quickstart connect",
+      },
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <Github className="h-4 w-4" />,
+        variant: "primary",
+        aria: "Open connect clients guide",
+      },
+    ],
   },
   {
-    title: "Compare & Evaluate",
-    body: "Visualize AUC/accuracy by round, compare runs, and export results for your paper or report.",
+    title: "Analyze & Export",
+    body: "Compare runs, visualize AUC/ROC and losses, then export artifacts and persist results for reproducibility.",
     img: "/images/tutos/results.png",
-    alt: "Metrics comparison",
-    color: "bg-yellow-400",
+    alt: "Results and analytics",
+    color: "bg-emerald-400",
+    icon: <LineChart className="h-5 w-5 text-secondary" />,
+    link: "/docs/results-and-exports",
+    actions: [
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <BookOpen className="h-4 w-4" />,
+        variant: "ghost",
+        aria: "Open connect clients guide",
+      },
+      {
+        label: " ",
+        href: "/docs/quickstart#connect",
+        icon: <Play className="h-4 w-4" />,
+        variant: "red",
+        aria: "Open quickstart connect",
+      },
+      {
+        label: "",
+        href: "/docs/real-world/connect-clients",
+        icon: <Github className="h-4 w-4" />,
+        variant: "primary",
+        aria: "Open connect clients guide",
+      },
+    ],
   },
 ];
+
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
 };
+
 export default function ScrollTutorial() {
   const [active, setActive] = React.useState(0);
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative  container mx-auto w-full text-text">
-      <div className=" text-center">
+    <section className="relative container mx-auto w-full text-text">
+      <div className="text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-text md:text-5xl">
           From Setup to Breakthroughs
         </h2>
-        <p className="mt-3 text-text font-medium w-full md:w-3/5 mx-auto ">
-          Follow our simple step-by-step process to connect sites securely,
-          launch federated training with your preferred strategy, and track
-          results in real-time with clear visual insights.
+        <p className="mx-auto mt-3 w-full font-medium text-text md:w-3/5">
+          Connect sites securely, validate datasets, design pipelines, launch
+          federated rounds, and analyze results—end to end.
         </p>
       </div>
-      <div className="mx-auto max-w-7xl px-6 md:px-10 py-16 md:py-24">
-        <div className="grid lg:grid-cols-12 gap-10">
+
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
+        <div className="grid gap-10 lg:grid-cols-12">
           {/* LEFT: scroll steps */}
           <div className="lg:col-span-5">
             <ol className="relative">
@@ -103,16 +281,16 @@ export default function ScrollTutorial() {
           </div>
 
           {/* RIGHT: sticky stage */}
-          <div className="lg:col-span-7 relative ">
-            <div className="lg:sticky lg:top-56 border border-white/10 rounded-2xl   bg-white/[0.02] overflow-hidden relative h-[60vh] md:h-[45vh]">
-              <div className="absolute inset-0 rounded-xl blur-2xl -z-0 bg-gradient-to-r from-primary via-secondary to-red-primary opacity-50"></div>
+          <div className="relative lg:col-span-7 ">
+            <div className="relative h-[60vh] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] lg:sticky lg:top-56 md:h-[45vh]">
+              <div className="absolute inset-0 -z-0 rounded-xl bg-gradient-to-r from-primary via-secondary to-red-primary opacity-50 blur-2xl"></div>
               <Image
-                className="absolute top-70 opacity-60 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full "
+                className="absolute left-1/2 top-70 w-full -translate-x-1/2 -translate-y-1/2 opacity-60"
                 src="/medfl_logo.png"
                 width={1200}
                 height={1200}
                 alt="medfl logo"
-              ></Image>
+              />
               <AnimatePresence mode="popLayout" initial={false}>
                 {steps.map((s, i) =>
                   i === active ? (
@@ -141,38 +319,36 @@ export default function ScrollTutorial() {
                         alt={s.alt ?? s.title}
                         width={1920}
                         height={1080}
-                        className=" rounded-xl   h-full w-full object-cover"
+                        className="h-full w-full rounded-xl object-cover"
                         priority
                       />
-
-                      {/* soft top/bottom fades for readability */}
                     </motion.div>
                   ) : null
                 )}
               </AnimatePresence>
 
               {/* Simple progress chip */}
-              <div className="absolute right-3 bottom-3 rounded-full bg-black/50 px-2 py-1 text-xs">
+              <div className="absolute bottom-3 right-3 rounded-full bg-black/50 px-2 py-1 text-xs">
                 {active + 1} / {steps.length}
               </div>
-              <div className="absolute left-5 top-3 rounded-full bg-red-400  w-3 h-3 text-xs"></div>
-              <div className="absolute left-9 top-3 rounded-full bg-green-400  w-3 h-3 text-xs"></div>
-              <div className="absolute left-13 top-3 rounded-full bg-yellow-400  w-3 h-3 text-xs"></div>
+              <div className="absolute left-5 top-3 h-3 w-3 rounded-full bg-red-400 text-xs"></div>
+              <div className="absolute left-9 top-3 h-3 w-3 rounded-full bg-green-400 text-xs"></div>
+              <div className="absolute left-[3.25rem] top-3 h-3 w-3 rounded-full bg-yellow-400 text-xs"></div>
             </div>
 
             {/* Mobile: inline images (when no sticky) */}
-            <div className="mt-6 lg:hidden space-y-6">
+            <div className="mt-6 space-y-6 lg:hidden">
               {steps.map((s, i) => (
                 <div
                   key={`m-${i}`}
-                  className="rounded-xl overflow-hidden border border-white/10"
+                  className="overflow-hidden rounded-xl border border-white/10"
                 >
                   <Image
                     src={s.img}
                     alt={s.alt ?? s.title}
                     width={1920}
                     height={1080}
-                    className="w-full h-auto object-cover"
+                    className="h-auto w-full object-cover"
                   />
                 </div>
               ))}
@@ -206,7 +382,7 @@ function StepBlock({
   }, [inView, onEnter]);
 
   return (
-    <li ref={ref} className="min-h-[70vh] flex items-center py-12 ">
+    <li ref={ref} className="flex min-h-[70vh] items-center py-12">
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{
@@ -216,18 +392,58 @@ function StepBlock({
         transition={{ duration: reducedMotion ? 0 : 0.45, ease: "easeOut" }}
         className="max-w-lg"
       >
-        <div className="flex items-center gap-3 mb-4">
+        <div className="mb-4 flex items-center gap-3">
           <span
             className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold
-              ${active ? " text-black" : "bg-white/10 text-white/80"} ${
+              ${active ? "text-black" : "bg-white/10 text-white/80"} ${
               step.color
             }`}
           >
             {index + 1}
           </span>
-          <h3 className="text-xl md:text-2xl font-bold">{step.title}</h3>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-foreground/10">
+              {step.icon}
+            </span>
+            <h3 className="text-xl font-bold md:text-2xl">{step.title}</h3>
+          </div>
         </div>
-        <p className="text-sm md:text-base opacity-80">{step.body}</p>
+
+        <p className="text-sm opacity-80 md:text-base">{step.body}</p>
+
+        {/* Actions */}
+        {(step.link || step.actions?.length) && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {/* {step.link && (
+              <Link
+                href={step.link}
+                aria-label={`Open guide: ${step.title}`}
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-primary/20 bg-primary px-3 py-2 text-sm font-medium text-black transition hover:brightness-95"
+              >
+                <BookOpen className="h-4 w-4" />
+                Guide
+              </Link>
+            )} */}
+            {step.actions?.map((a, idx) => (
+              <Link
+                key={`${step.title}-action-${idx}`}
+                href={a.href}
+                aria-label={a.aria || a.label}
+                className={[
+                  "inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm transition",
+                  a.variant === "primary"
+                    ? "text-primary border border-primary/20  hover:brightness-95"
+                    : a.variant === "red"
+                    ? "text-red-500 border border-red-500/40  hover:brightness-95"
+                    : "border border-foreground/20 bg-transparent hover:bg-foreground/10",
+                ].join(" ")}
+              >
+                {a.icon}
+                {a.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </motion.div>
     </li>
   );
