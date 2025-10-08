@@ -7,12 +7,8 @@ import {
   Package,
   Laptop,
   Server,
-  ShieldCheck,
-  Activity,
   BarChart3,
   Globe2,
-  PlayCircle,
-  BookOpen,
   ArrowRight,
 } from "lucide-react";
 

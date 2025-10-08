@@ -1,20 +1,11 @@
 "use client";
-import Image from "next/image";
-
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
-import SimpleGlobe from "@/components/Globe";
-import GlobeDemo from "@/components/globe-demo";
-import Link from "next/link";
 import HeroSection from "@/components/homePage/HeroSection";
 import { Montserrat } from "next/font/google";
 import ScrollTutorial from "@/components/homePage/Tuto";
 import OurTeam from "@/components/homePage/OurTeam";
-import WorkFlow from "@/components/homePage/WorkFlow";
 import Flow from "@/components/homePage/flow";
 import GetStartedSection from "@/components/homePage/GetStarted";
 import TutorialsSection from "@/components/homePage/Tutorials";
-import { useTheme } from "next-themes";
 
 
 const montserrat = Montserrat({
@@ -24,7 +15,6 @@ const montserrat = Montserrat({
   variable: "--font-montserrat", // Optional: for CSS variables
 });
 export default function Home() {
-    const { theme, setTheme, resolvedTheme } = useTheme();
   return (
     <div className={`${montserrat.className}  relative bg-background`}>
          {/* <div
