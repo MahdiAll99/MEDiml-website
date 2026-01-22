@@ -18,9 +18,9 @@ import Image from "next/image";
 export default function GetStartedSection() {
   const [tab, setTab] = React.useState<"python" | "desktop">("python");
 
-  const pipCmd = `pip install MEDfl`;
+  const pipCmd = `pip install MEDiml`;
 
-  const serverExample = `from MEDfl.rw.server import FederatedServer, Strategy
+  const serverExample = `from MEDiml.rw.server import FederatedServer, Strategy
 
 custom_strategy = Strategy(
     name="FedAvg",
@@ -47,7 +47,7 @@ server = FederatedServer(
 )
 server.start()`;
 
-  const clientExample = `from MEDfl.rw.client import FlowerClient, DPConfig
+  const clientExample = `from MEDiml.rw.client import FlowerClient, DPConfig
 
 # Example hyperparameters for XGBoost
 xgb_params = {
@@ -96,7 +96,7 @@ client.start()`;
               Install, run, and federate in minutes
             </h2>
             <p className="mt-3 max-w-2xl text-text/80">
-              Use MEDfl as a Python package or install the desktop application.
+              Use MEDiml as a Python package or install the desktop application.
               Start a server, connect clients, and track federated rounds.
             </p>
           </div>
@@ -232,7 +232,7 @@ client.start()`;
             <Card title="Run & connect" icon={<Server className="h-5 w-5" />}>
               <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
                 <li>
-                  Launch the MEDfl app and choose <em>Server</em> or{" "}
+                  Launch the MEDiml app and choose <em>Server</em> or{" "}
                   <em>Client</em> mode.
                 </li>
                 <li>

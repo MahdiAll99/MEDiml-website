@@ -30,7 +30,7 @@ export default function Home() {
         }}
       /> */}
       <HeroSection />
-      <ScrollTutorial></ScrollTutorial>
+      <ScrollTutorial/>
       {/* <OurTeam></OurTeam> */}
       {/* <WorkFlow/> */}
       <Flow/>

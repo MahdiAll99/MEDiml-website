@@ -28,7 +28,7 @@ export default function FooterSection() {
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-2">
               <Image
-                src="/medfl_logo.png"
+                src="/MEDimlLogo.png"
                 width={200}
                 height={50}
                 alt="logo"

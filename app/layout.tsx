@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MEDfl",
+  title: "MEDiml",
   description: "Your application for federated learning",
 };
 

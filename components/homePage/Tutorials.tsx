@@ -21,8 +21,8 @@ type Tutorial = {
 
 const tutorials: Tutorial[] = [
   {
-    title: "Install MEDfl (Python)",
-    description: "Set up a virtualenv and install MEDfl via pip in minutes.",
+    title: "Install MEDiml (Python)",
+    description: "Set up a virtualenv and install MEDiml via pip in minutes.",
     href: "/docs/tutorials/install-python",
     icon: <Package className="h-5 w-5" />,
   },
@@ -81,7 +81,7 @@ export default function TutorialsSection() {
               Learn by building, step by step
             </h2>
             <p className="mt-3 max-w-2xl text-text/80">
-              Follow focused, practical guides to get MEDfl running — from pip
+              Follow focused, practical guides to get MEDiml running — from pip
               install to multi-site federated training.
             </p>
           </div>

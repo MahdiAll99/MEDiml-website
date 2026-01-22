@@ -11,7 +11,7 @@ type VideoItem = {
 export const videos: VideoItem[] = [
   {
     title: "Introduction to the Federated Learning Module",
-    description: "Install MEDfl, configure your environment, and run your first experiment.",
+    description: "Install MEDiml, configure your environment, and run your first experiment.",
     youtubeId: "7vQFheeRvp4",
     href: "https://youtu.be/7vQFheeRvp4?si=09qGzoA2HI6xeZlV",
     duration: "8:12",
@@ -19,14 +19,14 @@ export const videos: VideoItem[] = [
   },
   {
     title: "Create and run federated learning pipelines",
-    description: "By the end of this video, you’ll manage and run your own federated learning experiments within MEDfl.",
+    description: "By the end of this video, you’ll manage and run your own federated learning experiments within MEDiml.",
     youtubeId: "WR5IC0aVMZ8",
     href: "https://youtu.be/WR5IC0aVMZ8?si=slDuxeCLihsBEj4h",
     duration: "05:37",
     level: "Intermediate",
   },
   {
-    title: "MEDfl | Crash tutorial",
+    title: "MEDiml | Crash tutorial",
     description: "Drag-and-drop pipelines and launch federated training end-to-end.",
     youtubeId: "pFXtTte8BjY",
     href: "https://youtu.be/pFXtTte8BjY?si=wggls9fqwhKwcblW",
@@ -35,7 +35,7 @@ export const videos: VideoItem[] = [
   },
   // Example playlist card (optional)
   // {
-  //   title: "Full Playlist: MEDfl Tutorials",
+  //   title: "Full Playlist: MEDiml Tutorials",
   //   description: "All tutorials in one place.",
   //   playlistId: "PLxxxxxx",
   //   href: "https://www.youtube.com/playlist?list=PLxxxxxx",

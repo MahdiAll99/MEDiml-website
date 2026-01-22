@@ -55,7 +55,7 @@ export default function VideoTutorialsSection() {
           </div>
 
           <h2 className="text-balance text-4xl font-extrabold tracking-tight md:text-5xl">
-            Learn MEDfl with guided videos
+            Learn MEDiml with guided videos
           </h2>
           <p className="mx-auto mt-3 text-pretty opacity-80">
             Short, practical walkthroughs—from client onboarding and validation to pipelines,
