@@ -23,7 +23,7 @@ export default function Home() {
         className="pointer-events-none absolute inset-0 mix-blend-screen"
         style={{
           backgroundImage: resolvedTheme == "dark" ? 
-            "linear-gradient(0deg, rgba(255,255,255,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.09) 1px, transparent 1px)" : "linear-gradient(0deg, rgba(0,0,0,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.9) 1px, transparent 1px)" ,
+            "linear-gradient(0deg, rgba(255, 255, 255, 0.41) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.09) 1px, transparent 1px)" : "linear-gradient(0deg, rgba(0,0,0,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.9) 1px, transparent 1px)" ,
           backgroundSize: "40px 40px",
           backgroundPosition: "-1px -1px",
           opacity: 0.25,

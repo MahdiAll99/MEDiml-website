@@ -60,19 +60,17 @@ function StepCard({
   step: Step;
   index: number;
   total: number;
-  scrollYProgress?: MotionValue<number>; // optional for mobile
+  scrollYProgress: MotionValue<number>; // optional for mobile
 }) {
   // Desktop animated values (fallback to static on mobile)
   const start = index / total;
   const end = (index + 1) / total;
 
-  const opacity = scrollYProgress
-    ? useTransform(scrollYProgress, [start, end], [0.25, 1])
-    : undefined;
 
-  const scale = scrollYProgress
-    ? useTransform(scrollYProgress, [start, end], [0.96, 1])
-    : undefined;
+  const opacity = useTransform(scrollYProgress, [start, end], [0.25, 1])
+
+  const scale = useTransform(scrollYProgress, [start, end], [0.96, 1])
+   
 
   return (
     <motion.div
