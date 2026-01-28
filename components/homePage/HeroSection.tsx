@@ -12,6 +12,7 @@ import {
   Smile,
   Sparkles,
   Zap,
+  Image as ImageIcon,
 } from "lucide-react";
 import PartnersSlider from "./PartnersSlider";
 import Image from "next/image";
@@ -79,37 +80,34 @@ export default function HeroSection() {
         <div className="pb-15 relative flex flex-col justify-center gap-4 lg:col-span-6 xl:col-span-6">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             <span className="text-secondary relative">
-              <span className=" relative">MEDiml</span>
-            </span>
-            , <span className="relative text-primary">Medical Image Analysis with Machine Learning</span>{" "}
-            : Strategies for Simpler {" "}
-            <span className="text-primary relative">
-              <span className="relative">Radiomics</span>
-            </span>
+              <span className=" relative">Open the</span>
+              <span className=" relative text-red-primary"> World of</span>
+            </span>{" "}
+            <span className="relative text-primary">Radiomics</span>
           </h1>
           <p className="mt-3 text-sm md:text-lg">
-            An all-in-one open-source software designed to enhance synergy between computer scientists and clinical researchers in the field of radiomics.
+            An all-in-one open-source software designed to enhance synergy between computer scientists and clinical researchers in the field of radiomics. Transform medical images into insightful knowledge: explore, analyze, and extract with MEDiml.
           </p>
 
           <div className="flex gap-4">
             <a
-              href="https://medomicslab.gitbook.io/mediml-app-docs/"
+              href="https://medomicslab.gitbook.io/mediml-app-docs"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-secondary md:px-5 px-3 py-3 text-sm font-medium text-black shadow-lg transition hover:brightness-95"
             >
-              <BookOpen className="h-4 w-4" />
+              <Rocket className="h-4 w-4" />
               
-               <span className="hidden md:block">Documentation</span>
+               <span className="hidden md:block">Get Started</span>
               </a>
             <a
-              href="https://medomicslab.gitbook.io/mediml-app-docs/quick-start"
+              href="https://youtube.com/playlist?list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru&si=QnNFQe5-oRVHmoh8"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary md:px-5 px-3 py-3 text-sm font-medium text-black shadow-lg transition hover:brightness-95"
             >
-              <Rocket className="h-4 w-4" /> 
-               <span className="hidden md:block">Quickstart</span> 
+              <Play className="h-4 w-4" /> 
+               <span className="hidden md:block">Explore Tutorials</span> 
               
             </a>
             <a
@@ -158,7 +156,7 @@ export default function HeroSection() {
                     <Globe className="h-4 w-4 text-secondary " />
                   </span>
                   <span className="text-sm font-medium text-text/90">
-                    Easy access to Radiomic tools
+                    IBSI-Compliant Feature Extraction
                   </span>
                 </div>
               </div>
@@ -179,7 +177,7 @@ export default function HeroSection() {
                     <Handshake className="h-4 w-4 text-primary " />
                   </span>
                   <span className="text-sm font-medium text-text/90">
-                    Enhancing synergy between clinicians & data scientists
+                    No Coding Required
                   </span>
                 </div>
               </div>

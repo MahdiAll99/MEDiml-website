@@ -20,56 +20,38 @@ export default function GetStartedSection() {
 
   const pipCmd = `pip install MEDiml`;
 
-  const serverExample = `from MEDiml.rw.server import FederatedServer, Strategy
+  const extractionExample = `from MEDiml import MEDiml
+import json
 
-custom_strategy = Strategy(
-    name="FedAvg",
-    fraction_fit=1,
-    min_fit_clients=1,
-    min_evaluate_clients=1,
-    min_available_clients=1,
-    local_epochs=1,
-    threshold=0.5,
-    learning_rate=0.01,
-    optimizer_name="SGD",
-    saveOnRounds=3,
-    savingPath="./",
-    total_rounds=10,
-    # Adjust "target" to your label column name
-    datasetConfig={"isGlobal": True, "globalConfig": {"target": "label", "testFrac": 0.2}}
+# Load extraction parameters
+with open("extraction_params.json") as f:
+    params = json.load(f)
+
+# Initialize MEDiml with a scan
+med = MEDiml()
+med.init_from_nifti(
+    path_to_nifti="path/to/scan.nii.gz",
+    path_to_roi="path/to/mask.nii.gz"
 )
 
-server = FederatedServer(
-    host="0.0.0.0",
-    port=8080,
-    num_rounds=10,
-    strategy=custom_strategy,
-)
-server.start()`;
+# Extract radiomics features (IBSI-compliant)
+features = med.extract_features(params)
+print(features)`;
 
-  const clientExample = `from MEDiml.rw.client import FlowerClient, DPConfig
+  const batchExample = `from MEDiml.biomarkers.batch import BatchExtractor
 
-# Example hyperparameters for XGBoost
-xgb_params = {
-    "objective": "binary:logistic",
-    "eval_metric": "logloss",
-    "eta": 0.1,
-    "max_depth": 6,
-    "subsample": 0.8,
-    "colsample_bytree": 0.8,
-    "tree_method": "hist",  # GPU: "gpu_hist"
-}
-
-client = FlowerClient(
-    server_address="100.65.215.27:8080",
-    data_path="../data/client1.csv",
-    dp_config=None,         # DP is only for NN
-    model_type="xgb",       # run XGBoost mode
-    xgb_params=xgb_params,  # 🔑 required for XGBoost
-    xgb_rounds=10           # 🔑 local boosting steps per FL round
+# Configure batch extraction
+extractor = BatchExtractor(
+    path_to_data="./data/scans/",
+    path_to_params="./extraction_params.json",
+    path_to_output="./results/"
 )
 
-client.start()`;
+# Run extraction on all scans
+extractor.run()
+
+# Export results to CSV
+extractor.export_to_csv("radiomics_features.csv")`;
 
   return (
     <section className="relative w-full  text-text">
@@ -77,7 +59,7 @@ client.start()`;
         src={tab == "python" ? "/images/code.png" : "/images/tutos/home.png"}
         width={2050}
         height={2050}
-        alt="Medfl"
+        alt="MEDiml"
         className={`absolute top-0 right-0 w-1/2  ${
           tab == "python" ? "opacity-10" : "opacity-5"
         } `}
@@ -93,11 +75,11 @@ client.start()`;
               <span className="text-secondary">Get started</span>
             </div>
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-[1.05]">
-              Install, run, and federate in minutes
+              Analyze your images now
             </h2>
             <p className="mt-3 max-w-2xl text-text/80">
               Use MEDiml as a Python package or install the desktop application.
-              Start a server, connect clients, and track federated rounds.
+              No Python knowledge required — enjoy an all-in-one interface for medical image analysis with drag-drop style feature extraction and model training.
             </p>
           </div>
 
@@ -126,19 +108,19 @@ client.start()`;
           <div>
               <div className="flex gap-2 mt-8">
             <CTA
-              href="https://medfl.readthedocs.io/en/latest/"
+              href="https://medimage.readthedocs.io/"
               icon={<BookOpen className="h-4 w-4 text-primary" />}
             >
               Docs
             </CTA>
             <CTA
-              href="https://pypi.org/project/medfl/"
+              href="https://pypi.org/project/MEDimage/"
               icon={<Download className="h-4 w-4 text-secondary" />}
             >
-              Installation
+              PyPI
             </CTA>
             <CTA
-              href="https://github.com/medfl-org/medfl"
+              href="https://github.com/MEDomicsLab/MEDiml"
               icon={<Github className="h-4 w-4 text-yellow-400" />}
             >
               GitHub
@@ -151,41 +133,17 @@ client.start()`;
             >
               <CodeBlock lang="bash" code={pipCmd} />
               <p className="mt-3 text-sm text-text/70">
-                Requires Python 3.9+. Create a virtual environment for best
-                results.
+                Requires Python 3.8+. Compatible with DICOM and NIfTI formats.
+                Adheres to IBSI international standards.
               </p>
             </Card>
 
-       {/*      <Card
-              title="Server: minimal FedAvg"
-              icon={<Server className="h-5 w-5" />}
-            >
-              <CodeBlock lang="python" code={serverExample} />
-            </Card> */}
-
-    {/*         <Card
-              title="Client: XGBoost example"
+            <Card
+              title="Extract radiomics features"
               icon={<Package className="h-5 w-5" />}
             >
-              <CodeBlock lang="python" code={clientExample} />
-            </Card> */}
-
-      {/*       <Card title="Next steps" icon={<BookOpen className="h-5 w-5" />}>
-              <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
-                <li>
-                  Run the server, then start multiple clients on different
-                  machines.
-                </li>
-                <li>Open the dashboard to monitor rounds and metrics.</li>
-                <li>
-                  Try DP (NN mode) or compare strategies and export results.
-                </li>
-              </ul>
-              <div className="mt-4 flex gap-2">
-                <SmallLink href="/docs/quickstart">Quickstart</SmallLink>
-                <SmallLink href="/docs/api">API Reference</SmallLink>
-              </div>
-            </Card> */}
+              <CodeBlock lang="python" code={extractionExample} />
+            </Card>
           </div>
           </div>
         
@@ -193,19 +151,19 @@ client.start()`;
           <div>
             <div className="flex gap-2 mt-8">
             <CTA
-              href="https://medfl.readthedocs.io/en/latest/"
+              href="https://medomicslab.gitbook.io/mediml-app-docs"
               icon={<BookOpen className="h-4 w-4 text-primary" />}
             >
               Docs
             </CTA>
             <CTA
-              href="https://pypi.org/project/medfl/"
+              href="https://medomicslab.gitbook.io/mediml-app-docs/quick-start"
               icon={<Download className="h-4 w-4 text-secondary" />}
             >
-              Installation
+              Quick Start
             </CTA>
             <CTA
-              href="https://github.com/MEDomicsLab/MEDomics/tree/dev_medfl_sqllite"
+              href="https://github.com/MEDomicsLab/MEDiml"
               icon={<Github className="h-4 w-4 text-yellow-400" />}
             >
               GitHub
@@ -214,58 +172,54 @@ client.start()`;
           <div className="mt-8 grid lg:grid-cols-3 gap-6">
             <Card title="Download" icon={<Download className="h-5 w-5" />}>
               <div className="grid grid-cols-1 gap-2">
-                <LinkBtn href="/download#windows">Windows (.exe)</LinkBtn>
-                <LinkBtn href="/download#macos">macOS (.dmg)</LinkBtn>
-                <LinkBtn href="/download#linux">Linux (.AppImage)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-win.exe">Windows (.exe)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-mac.dmg">macOS (.dmg)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-ubuntu.deb">Linux (.AppImage)</LinkBtn>
               </div>
               <p className="mt-3 text-sm text-text/70">
-                Check the install guide for first-run permissions and network
-                access.
+                Drag-and-drop interface for easy feature extraction and model training.
+                No coding required.
               </p>
               <div className="mt-3">
-                <SmallLink href="/docs/desktop/install">
+                <SmallLink href="https://medomicslab.gitbook.io/mediml-app-docs/quick-start">
                   Install guide
                 </SmallLink>
               </div>
             </Card>
-{/* 
-            <Card title="Run & connect" icon={<Server className="h-5 w-5" />}>
+
+            <Card title="Key Features" icon={<Server className="h-5 w-5" />}>
               <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
                 <li>
-                  Launch the MEDiml app and choose <em>Server</em> or{" "}
-                  <em>Client</em> mode.
+                  Code-free intuitive interface for medical image analysis
                 </li>
                 <li>
-                  Enter your server address (e.g.,{" "}
-                  <code>100.65.215.27:8080</code>).
+                  IBSI-compliant radiomics feature extraction
                 </li>
                 <li>
-                  Pick your model type (NN/XGBoost), set rounds, and start.
+                  Support for DICOM and NIfTI formats
+                </li>
+                <li>
+                  Tailored functionalities for model training
                 </li>
               </ul>
-              <div className="mt-3">
-                <SmallLink href="/docs/desktop/quickstart">
-                  Desktop quickstart
-                </SmallLink>
-              </div>
-            </Card> */}
+            </Card>
 
-           {/*  <Card
-              title="Where to next?"
+            <Card
+              title="Resources"
               icon={<BookOpen className="h-5 w-5" />}
             >
               <ul className="text-sm space-y-2 text-text/80 list-disc pl-5">
-                <li>Configure Differential Privacy (NN only) with Opacus.</li>
-                <li>Compare results across runs and export charts.</li>
-                <li>Join us on GitHub for issues and feature requests.</li>
+                <li>Guided video tutorials for step-by-step learning</li>
+                <li>Tutorials and code examples on GitHub</li>
+                <li>Comprehensive documentation website</li>
               </ul>
               <div className="mt-3 flex gap-2">
-                <SmallLink href="/docs">Docs</SmallLink>
-                <SmallLink href="https://github.com/medfl-org/medfl">
-                  GitHub
+                <SmallLink href="https://medomicslab.gitbook.io/mediml-app-docs">Docs</SmallLink>
+                <SmallLink href="https://github.com/MEDomicsLab/MEDiml/tree/main/notebooks">
+                  Notebooks
                 </SmallLink>
               </div>
-            </Card> */}
+            </Card>
           </div>
           </div>
                

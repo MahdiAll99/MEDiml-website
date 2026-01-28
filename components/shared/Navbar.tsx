@@ -56,11 +56,11 @@ function NavA({
 
 export default function Navbar({
   links = [
-    { label: "Docs", href: "/docs/overview" },
-    { label: "Architecture", href: "/docs/real-world" },
-    { label: "Installation", href: "/docs/simulation" },
-    { label: "Tutorials", href: "/docs/pipelines/builder" },
-    { label: "Blogs", href: "/docs/api" },
+    { label: "Docs", href: "https://medomicslab.gitbook.io/mediml-app-docs", external: true },
+    { label: "Package", href: "https://medimage.readthedocs.io/", external: true },
+    { label: "Installation", href: "https://medomicslab.gitbook.io/mediml-app-docs/quick-start", external: true },
+    { label: "Tutorials", href: "https://youtube.com/playlist?list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru", external: true },
+    { label: "IBSI", href: "https://theibsi.github.io/", external: true },
   ],
   cta = { label: "Discord", href: "https://discord.com/invite/ZbaGj8E6mP", external: true },
   secondaryCta = {
