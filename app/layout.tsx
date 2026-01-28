@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MEDfl",
-  description: "Your application for federated learning",
+  title: "Home | MEDiml | Radiomics analysis",
+  description: "An all-in-one open-source software for radiomics analysis and medical image feature extraction",
 };
 
 export default function RootLayout({
@@ -26,8 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>

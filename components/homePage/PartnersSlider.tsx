@@ -12,11 +12,13 @@ export type Partner = {
 
 const DEFAULT_PARTNERS: Partner[] = [
   { name: "AWS", src: "/images/partners/medomics.png", href: "#" },
-  { name: "Azure", src: "/images/partners/udes_1.png", href: "#" },
-  { name: "AWS", src: "/images/partners/medomics.png", href: "#" },
-  { name: "Azure", src: "/images/partners/udes_1.png", href: "#" },
+  { name: "Azure", src: "/images/partners/udes_white.png", href: "#" },
   { name: "Dell", src: "/images/partners/mcgill.png", href: "#" },
-  { name: "Dell", src: "/images/partners/udes_1.png", href: "#" },
+  { name: "AWS", src: "/images/partners/unite_ssa.png", href: "#" },
+  { name: "AWS", src: "/images/partners/medomics.png", href: "#" },
+  { name: "Azure", src: "/images/partners/udes_white.png", href: "#" },
+  { name: "Dell", src: "/images/partners/mcgill.png", href: "#" },
+  { name: "AWS", src: "/images/partners/unite_ssa.png", href: "#" },
 ];
 
 export default function PartnersSlider({
@@ -93,7 +95,7 @@ function Logo({
       src={partner.src}
       alt={partner.name}
       className={
-        "h-8 w-auto  object-contain  transition grayscale opacity-60" +
+        "h-8 w-auto  object-contain  transition opacity-80" +
         (section == "Hero" ? " md:h-10" : " md:h-18")
       }
       draggable={false}

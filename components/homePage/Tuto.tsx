@@ -23,6 +23,12 @@ import {
   BarChart3,
   Play,
   Github,
+  FileImage,
+  Settings,
+  Layers,
+  Download,
+  Brain,
+  FileOutput,
 } from "lucide-react";
 
 type Action = {
@@ -46,194 +52,194 @@ type Step = {
 
 const steps: Step[] = [
   {
-    title: "Connect Clients Securely",
-    body: "Onboard hospitals via Tailscale VPN and WebSockets. Generate auth keys and scripts, then invite collaborators.",
-    img: "/images/tutos/home.png",
-    alt: "Onboarding clients",
+    title: "Load Medical Images",
+    body: "Import DICOM or NIfTI scans along with segmentation masks. MEDiml supports widely used medical imaging formats.",
+    img: "/images/tutos/DataManager.JPG",
+    alt: "Loading medical images",
     color: "bg-red-400",
-    icon: <Plug className="h-5 w-5 text-primary" />,
-    link: "/docs/real-world/connect-clients",
+    icon: <FileImage className="h-5 w-5 text-primary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs",
     actions: [
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://medomicslab.gitbook.io/mediml-app-docs/radiomics/data-processing/data-manager",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
-        aria: "Open connect clients guide",
+        aria: "Open documentation",
       },
       {
         label: " ",
-        href: "/docs/quickstart#connect",
-        icon: <Rocket className="h-4 w-4" />,
+        href: "https://www.youtube.com/watch?v=JS6CWvUkMFY",
+        icon: <Play className="h-4 w-4" />,
         variant: "red",
-        aria: "Open quickstart connect",
+        aria: "Open tutorial",
       },
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://github.com/MEDomicsLab/MEDiml",
         icon: <Github className="h-4 w-4" />,
         variant: "primary",
-        aria: "Open connect clients guide",
+        aria: "Open GitHub",  
       },
     ],
   },
   {
-    title: "Build Your Network",
-    body: "Discover available clients, verify socket/VPN status, and select the cohort for training.",
-    img: "/images/tutos/network.png",
-    alt: "Network assembly",
+    title: "Explore Your Data",
+    body: "Visualize scans and ROIs, inspect metadata, and review data statistics before extraction.",
+    img: "/images/tutos/ImageViewer.jpg",
+    alt: "Data exploration",
     color: "bg-green-400",
-    icon: <Network className="h-5 w-5 text-secondary" />,
-    link: "/docs/real-world/network-view",
+    icon: <Layers className="h-5 w-5 text-secondary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs/radiomics/data-processing/radiomics-pre-checks",
     actions: [
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://medomicslab.gitbook.io/mediml-app-docs/radiomics/data-processing/radiomics-pre-checks",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
-        aria: "Open connect clients guide",
+        aria: "Open documentation",
       },
       {
         label: " ",
-        href: "/docs/quickstart#connect",
-        icon: <Rocket className="h-4 w-4" />,
+        href: "https://www.youtube.com/watch?v=rkpRYdb18k4&list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru&index=5&pp=iAQB",
+        icon: <Play className="h-4 w-4" />,
         variant: "red",
-        aria: "Open quickstart connect",
+        aria: "Watch tutorials",
       },
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://github.com/MEDomicsLab/MEDiml",
         icon: <Github className="h-4 w-4" />,
         variant: "primary",
-        aria: "Open connect clients guide",
+        aria: "Open GitHub",
       },
     ],
   },
   {
-    title: "Validate Compatibility",
-    body: "Run dataset and system checks: schema, columns, nulls, stats, OS/GPU. Be green before you train.",
-    img: "/images/tutos/dataStats.png",
-    alt: "Data stats and checks",
+    title: "Configure Extraction",
+    body: "Set up IBSI-compliant radiomics feature extraction parameters. Customize filters, discretization, and feature families.",
+    img: "/images/tutos/FeaturesToExtractrPage.PNG",
+    alt: "Extraction configuration",
     color: "bg-yellow-400",
-    icon: <ShieldCheck className="h-5 w-5 text-primary" />,
-    link: "/docs/real-world/validate-network",
+    icon: <Settings className="h-5 w-5 text-primary" />,
+    link: "https://medimage.readthedocs.io/",
     actions: [
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://medimage.readthedocs.io/en/latest/configurations_file.html",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
-        aria: "Open connect clients guide",
+        aria: "Open code documentation",
       },
       {
         label: " ",
-        href: "/docs/quickstart#connect",
-        icon: <Rocket className="h-4 w-4" />,
+        href: "https://theibsi.github.io/",
+        icon: <ShieldCheck className="h-4 w-4" />,
         variant: "red",
-        aria: "Open quickstart connect",
+        aria: "IBSI standards",
       },
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://github.com/MEDomicsLab/MEDiml/tree/main/notebooks/tutorial/settings",
         icon: <Github className="h-4 w-4" />,
         variant: "primary",
-        aria: "Open connect clients guide",
+        aria: "View settings",
       },
     ],
   },
   {
-    title: "Configure Pipelines",
-    body: "Drag-and-drop nodes (Model, Network, Optimize, Strategy). Toggle DP/TL, set rounds and metrics.",
-    img: "/images/tutos/configs.png",
-    alt: "Pipeline builder",
+    title: "Extract Features",
+    body: "Run batch extraction on individual scans or entire datasets. Features are computed following the IBSI workflow.",
+    img: "/images/tutos/ExtractionPipeline.PNG",
+    alt: "Feature extraction",
     color: "bg-blue-400",
-    icon: <Workflow className="h-5 w-5 text-secondary" />,
-    link: "/docs/pipelines/builder",
+    icon: <BarChart3 className="h-5 w-5 text-secondary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs",
     actions: [
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://medomicslab.gitbook.io/mediml-app-docs/radiomics/feature-extraction",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
-        aria: "Open connect clients guide",
+        aria: "Open documentation",
       },
       {
         label: " ",
-        href: "/docs/quickstart#connect",
+        href: "https://www.youtube.com/watch?v=BDFuzRM1fes&list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru&index=8&pp=iAQB",
         icon: <Rocket className="h-4 w-4" />,
         variant: "red",
-        aria: "Open quickstart connect",
+        aria: "Quick start",
       },
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://github.com/MEDomicsLab/MEDiml/blob/main/notebooks/tutorial/BatchExtractor-Tutorial.ipynb",
         icon: <Github className="h-4 w-4" />,
         variant: "primary",
-        aria: "Open connect clients guide",
+        aria: "Open GitHub",
       },
     ],
   },
   {
-    title: "Review & Launch",
-    body: "Inspect the final configuration, confirm client readiness, then start federated rounds when minimum criteria are met.",
-    img: "/images/tutos/checkConfig.png",
-    alt: "Review configuration",
+    title: "Train Models",
+    body: "Use extracted features to train predictive models. MEDiml offers tailored functionalities for model training and validation.",
+    img: "/images/tutos/LearningPipeline.JPG",
+    alt: "Model training",
     color: "bg-purple-400",
-    icon: <PlayCircle className="h-5 w-5 text-primary" />,
-    link: "/docs/run-and-monitor",
+    icon: <Brain className="h-5 w-5 text-primary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs",
     actions: [
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://medomicslab.gitbook.io/mediml-app-docs/learning",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
-        aria: "Open connect clients guide",
+        aria: "Open documentation",
       },
       {
         label: " ",
-        href: "/docs/quickstart#connect",
-        icon: <Rocket className="h-4 w-4" />,
+        href: "https://www.youtube.com/watch?v=Q4Y5xsvi9G0&list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru&index=7&pp=iAQB",
+        icon: <Play className="h-4 w-4" />,
         variant: "red",
-        aria: "Open quickstart connect",
+        aria: "Watch tutorials",
       },
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://github.com/MEDomicsLab/MEDiml/blob/main/notebooks/tutorial/Learning-Tutorial.ipynb",
         icon: <Github className="h-4 w-4" />,
         variant: "primary",
-        aria: "Open connect clients guide",
+        aria: "Open GitHub",
       },
     ],
   },
   {
     title: "Analyze & Export",
-    body: "Compare runs, visualize AUC/ROC and losses, then export artifacts and persist results for reproducibility.",
-    img: "/images/tutos/results.png",
-    alt: "Results and analytics",
+    body: "Visualize results, compare experiments, and export features and models for reproducibility and clinical research.",
+    img: "/images/tutos/ResultsAnalysis.PNG",
+    alt: "Results and exports",
     color: "bg-emerald-400",
-    icon: <LineChart className="h-5 w-5 text-secondary" />,
-    link: "/docs/results-and-exports",
+    icon: <FileOutput className="h-5 w-5 text-secondary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs",
     actions: [
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://medomicslab.gitbook.io/mediml-app-docs/demonstration",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
-        aria: "Open connect clients guide",
+        aria: "Open documentation",
       },
       {
         label: " ",
-        href: "/docs/quickstart#connect",
+        href: "https://www.youtube.com/watch?v=-6lYVOfyebE",
         icon: <Rocket className="h-4 w-4" />,
         variant: "red",
-        aria: "Open quickstart connect",
+        aria: "Watch tutorials",
       },
       {
         label: "",
-        href: "/docs/real-world/connect-clients",
+        href: "https://github.com/MEDomicsLab/MEDiml/blob/main/notebooks/tutorial/Learning-Tutorial.ipynb",
         icon: <Github className="h-4 w-4" />,
         variant: "primary",
-        aria: "Open connect clients guide",
+        aria: "Open GitHub",
       },
     ],
   },
@@ -254,11 +260,11 @@ export default function ScrollTutorial() {
     <section className="relative container mx-auto w-full text-text">
       <div className="text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-text md:text-5xl">
-          From Setup to Breakthroughs
+          From Images to Insights
         </h2>
         <p className="mx-auto mt-3 px-4 w-full font-medium text-text md:w-3/5">
-          Connect sites securely, validate datasets, design pipelines, launch
-          federated rounds, and analyze results—end to end.
+          Load medical images, configure extraction parameters, extract IBSI-compliant 
+          radiomics features, train models, and export results—all in one platform.
         </p>
       </div>
 
@@ -286,10 +292,10 @@ export default function ScrollTutorial() {
               <div className="absolute inset-0 -z-0 rounded-xl bg-gradient-to-r from-primary via-secondary to-red-primary opacity-50 blur-2xl"></div>
               <Image
                 className="absolute left-1/2 top-70 w-full -translate-x-1/2 -translate-y-1/2 opacity-60"
-                src="/medfl_logo.png"
+                src="/MEDimlLogo.png"
                 width={1200}
                 height={1200}
-                alt="medfl logo"
+                alt="MEDiml logo"
               />
               <AnimatePresence mode="popLayout" initial={false}>
                 {steps.map((s, i) =>
@@ -425,9 +431,11 @@ function StepBlock({
               </Link>
             )} */}
             {step.actions?.map((a, idx) => (
-              <Link
+              <a
                 key={`${step.title}-action-${idx}`}
                 href={a.href}
+                target="_blank"
+                rel="noreferrer"
                 aria-label={a.aria || a.label}
                 className={[
                   "inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm transition",
@@ -440,7 +448,7 @@ function StepBlock({
               >
                 {a.icon}
                 {a.label}
-              </Link>
+              </a>
             ))}
           </div>
         )}
