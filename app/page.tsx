@@ -7,6 +7,7 @@ import Flow from "@/components/homePage/flow";
 import GetStartedSection from "@/components/homePage/GetStarted";
 import TutorialsSection from "@/components/homePage/Tutorials";
 import VideoTutorialsSection from "@/components/homePage/YoutubeVideos";
+import DiscoverMEDiml from "@/components/homePage/DiscoverMEDiml";
 
 
 const montserrat = Montserrat({
@@ -30,7 +31,8 @@ export default function Home() {
         }}
       /> */}
       <HeroSection />
-      <ScrollTutorial></ScrollTutorial>
+      <DiscoverMEDiml />
+      <ScrollTutorial/>
       {/* <OurTeam></OurTeam> */}
       {/* <WorkFlow/> */}
       <Flow/>

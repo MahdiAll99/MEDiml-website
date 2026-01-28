@@ -8,6 +8,11 @@ import {
   Laptop,
   CheckCircle,
   Globe,
+  FileImage,
+  Settings,
+  BarChart3,
+  Download,
+  Code,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -20,28 +25,28 @@ type Step = {
 
 const steps: Step[] = [
   {
-    title: "Define the experiment idea",
-    body: "Set objectives, datasets, and federated assumptions.",
-    icon: <Lightbulb className="h-7 w-7 text-primary" />,
-    link: "",
+    title: "Load Medical Images",
+    body: "Import DICOM or NIfTI scans with their segmentation masks into MEDiml.",
+    icon: <FileImage className="h-7 w-7 text-primary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs", 
   },
   {
-    title: "Run simulations",
-    body: "Evaluate models and strategies in a simulated FL environment.",
-    icon: <Laptop className="h-7 w-7 text-secondary" />,
-    link: "",
+    title: "Configure & Extract",
+    body: "Set up radiomics feature extraction parameters and run feature extraction on single scans or entire datasets.",
+    icon: <Settings className="h-7 w-7 text-secondary" />,
+    link: "https://medimage.readthedocs.io/",
   },
   {
-    title: "Validate results",
-    body: "Inspect metrics and confirm experiment stability.",
-    icon: <CheckCircle className="h-7 w-7 text-primary" />,
-    link: "",
+    title: "Train & Export",
+    body: "Build predictive models and export results for clinical research.",
+    icon: <Download className="h-7 w-7 text-secondary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs",
   },
   {
-    title: "Deploy federated training",
-    body: "Execute the experiment on real distributed clients.",
-    icon: <Globe className="h-7 w-7 text-secondary" />,
-    link: "",
+    title: "Generate Code",
+    body: "Turn your graphical workflow into executable code for reproducibility and collaboration.",
+    icon: <Code className="h-7 w-7 text-secondary" />,
+    link: "https://medomicslab.gitbook.io/mediml-app-docs",
   },
 ];
 
@@ -75,15 +80,6 @@ function StepCard({
       <div className="flex w-full flex-col justify-between">
         <h3 className="mb-2 font-semibold">{step.title}</h3>
         <p className="text-sm opacity-80">{step.body}</p>
-
-        <Link
-          href={step.link || "#"}
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg border border-primary/20 bg-primary/10 px-3 py-2 text-sm text-text transition hover:bg-primary hover:text-black"
-          aria-label={`Open tutorial: ${step.title}`}
-        >
-          Read more
-          <ArrowRight className="h-4 w-4" />
-        </Link>
       </div>
     </motion.div>
   );
@@ -96,11 +92,11 @@ export default function Flow() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:hidden">
         <div className="text-center">
           <h2 className="text-balance text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-            Federated Training in {steps.length} Steps.
+            Radiomics Analysis in {steps.length} Steps
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-pretty">
-            Define the idea, run simulations, validate results, then deploy on
-            real distributed clients.
+            Load images, configure extraction, extract IBSI-compliant features,
+            and train models for clinical insights.
           </p>
         </div>
 
@@ -116,11 +112,11 @@ export default function Flow() {
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-16 text-center">
             <h2 className="text-balance text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-              Federated Training in {steps.length} Steps.
+              Radiomics Analysis in {steps.length} Steps
             </h2>
             <p className="mx-auto mt-3 max-w-3xl text-pretty">
-              Define the idea, run simulations, validate results, then deploy on
-              real distributed clients.
+              Load images, configure extraction, extract IBSI-compliant features,
+              and train models for clinical insights.
             </p>
           </div>
 

@@ -12,6 +12,7 @@ import {
   Smile,
   Sparkles,
   Zap,
+  Image as ImageIcon,
 } from "lucide-react";
 import PartnersSlider from "./PartnersSlider";
 import Image from "next/image";
@@ -79,44 +80,35 @@ export default function HeroSection() {
         <div className="pb-15 relative flex flex-col justify-center gap-4 lg:col-span-6 xl:col-span-6">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             <span className="text-secondary relative">
-              <span className=" relative">MEDfl</span>
-            </span>
-            , A <span className="relative text-primary">Collaborative</span>{" "}
-            Framework for Federated Learning in{" "}
-            <span className="text-primary relative">
-              <span className="relative">Medicine</span>
-            </span>
+              <span className=" relative">Open the</span>
+              <span className=" relative text-red-primary"> World of</span>
+            </span>{" "}
+            <span className="relative text-primary">Radiomics</span>
           </h1>
           <p className="mt-3 text-sm md:text-lg">
-            Train clinical AI models across hospitals without moving data. MEDfl
-            connects sites, orchestrates real-world and simulation experiments.
+            An all-in-one open-source software designed to enhance synergy between computer scientists and clinical researchers in the field of radiomics. Transform medical images into insightful knowledge: explore, analyze, and extract with MEDiml.
           </p>
 
           <div className="flex gap-4">
-            <Link
-              href="/docs/overview"
-              className="inline-flex items-center gap-2 rounded-full bg-secondary md:px-5 px-3 py-3 text-sm font-medium text-black shadow-lg transition hover:brightness-95"
-            >
-              <BookOpen className="h-4 w-4" />
-              
-               <span className="hidden md:block">Documentation</span> 
-            </Link>
-            <Link
-              href="/docs/quickstart"
-              className="inline-flex items-center gap-2 rounded-full bg-primary md:px-5 px-3 py-3 text-sm font-medium text-black shadow-lg transition hover:brightness-95"
-            >
-              <Rocket className="h-4 w-4" /> 
-               <span className="hidden md:block">Quickstart</span> 
-              
-            </Link>
             <a
-              href="https://github.com/MEDomics-UdeS/MEDfl"
+              href="https://medomicslab.gitbook.io/mediml-app-docs"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 md:px-5 px-3 py-3  text-sm font-medium transition hover:bg-foreground/10"
+              className="inline-flex items-center gap-2 rounded-full bg-secondary md:px-5 px-3 py-3 text-sm font-medium text-black shadow-lg transition hover:brightness-95"
             >
-              <Github className="h-4 w-4" />
-              <span className="hidden md:block">GitHub</span> 
+              <Rocket className="h-4 w-4" />
+              
+               <span className="hidden md:block">Get Started</span>
+              </a>
+            <a
+              href="https://youtube.com/playlist?list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru&si=QnNFQe5-oRVHmoh8"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary md:px-5 px-3 py-3 text-sm font-medium text-black shadow-lg transition hover:brightness-95"
+            >
+              <Play className="h-4 w-4" /> 
+               <span className="hidden md:block">Explore Tutorials</span> 
+              
             </a>
           </div>
 
@@ -140,7 +132,7 @@ export default function HeroSection() {
               <div className="relative  -mt-10 rounded-[1.75rem] ">
                 {/* <Image
                   className="absolute top-50 opacity-40 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full "
-                  src="/medfl_logo.png"
+                  src="/MEDimlLogo.png"
                   width={1200}
                   height={1200}
                   alt="medfl logo"
@@ -155,7 +147,7 @@ export default function HeroSection() {
                     <Globe className="h-4 w-4 text-secondary " />
                   </span>
                   <span className="text-sm font-medium text-text/90">
-                    Real-World & Simulation FL
+                    IBSI-Compliant Feature Extraction
                   </span>
                 </div>
               </div>
@@ -176,7 +168,7 @@ export default function HeroSection() {
                     <Handshake className="h-4 w-4 text-primary " />
                   </span>
                   <span className="text-sm font-medium text-text/90">
-                    Simplifying research collaboration
+                    No Coding Required
                   </span>
                 </div>
               </div>
