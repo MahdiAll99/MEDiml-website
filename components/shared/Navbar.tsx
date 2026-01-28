@@ -65,7 +65,7 @@ export default function Navbar({
   cta = { label: "Discord", href: "https://discord.com/invite/ZbaGj8E6mP", external: true },
   secondaryCta = {
     label: "GitHub",
-    href: "https://github.com/MEDomicsLab/MEDiml",
+    href: "https://github.com/MEDomicsLab/MEDiml-app",
     external: true,
   },
 }: Props) {

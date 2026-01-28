@@ -110,15 +110,6 @@ export default function HeroSection() {
                <span className="hidden md:block">Explore Tutorials</span> 
               
             </a>
-            <a
-              href="https://github.com/MEDomicsLab/MEDiml"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 md:px-5 px-3 py-3 text-sm font-medium transition hover:bg-foreground/10"
-            >
-              <Github className="h-4 w-4" />
-              <span className="hidden md:block">GitHub</span> 
-            </a>
           </div>
 
           <div className="mt-2 relative">

@@ -55,16 +55,6 @@ extractor.export_to_csv("radiomics_features.csv")`;
 
   return (
     <section className="relative w-full  text-text">
-      <Image
-        src={tab == "python" ? "/images/code.png" : "/images/tutos/home.png"}
-        width={2050}
-        height={2050}
-        alt="MEDiml"
-        className={`absolute top-0 right-0 w-1/2  ${
-          tab == "python" ? "opacity-10" : "opacity-5"
-        } `}
-      />
-
       {/* <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(800px_400px_at_80%_10%,rgba(59,130,246,0.08),transparent_60%),radial-gradient(600px_300px_at_10%_90%,rgba(6,182,212,0.06),transparent_50%)]" /> */}
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24">
         {/* Header */}
@@ -163,7 +153,7 @@ extractor.export_to_csv("radiomics_features.csv")`;
               Quick Start
             </CTA>
             <CTA
-              href="https://github.com/MEDomicsLab/MEDiml"
+              href="https://github.com/MEDomicsLab/MEDiml-app"
               icon={<Github className="h-4 w-4 text-yellow-400" />}
             >
               GitHub
