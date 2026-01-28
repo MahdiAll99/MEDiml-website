@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MEDiml",
+  title: "Home | MEDiml | Radiomics analysis",
   description: "An all-in-one open-source software for radiomics analysis and medical image feature extraction",
 };
 
