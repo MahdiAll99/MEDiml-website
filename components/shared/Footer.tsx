@@ -28,7 +28,7 @@ export default function FooterSection() {
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center gap-2">
               <Image
-                src="/medfl_logo.png"
+                src="/MEDimlLogo.png"
                 width={200}
                 height={50}
                 alt="logo"
@@ -76,43 +76,43 @@ export default function FooterSection() {
             className="grid grid-cols-2 gap-10 lg:col-span-2  "
           >
             <div className="md:justify-self-end">
-              <div className="text-sm font-semibold text-text/80">Sections</div>
+              <div className="text-sm font-semibold text-text/80">Resources</div>
               <ul className="mt-4 space-y-3 text-text/80">
                 <li>
-                  <Link href="/services" className="hover:text-text">
-                    Services
+                  <Link href="https://medomicslab.gitbook.io/mediml-app-docs" className="hover:text-text">
+                    App Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="/team" className="hover:text-text">
-                    Team
+                  <Link href="https://medimage.readthedocs.io/" className="hover:text-text">
+                    Code Documentation
                   </Link>
                 </li>
                 <li>
-                  <Link href="/testimonials" className="hover:text-text">
-                    Testimonials
+                  <Link href="https://youtube.com/playlist?list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru" className="hover:text-text">
+                    Video Tutorials
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="md:justify-self-end">
               <div className="text-sm font-semibold text-text/80">
-                Information
+                Community
               </div>
               <ul className="mt-4 space-y-3 text-text/80">
                 <li>
-                  <Link href="/faqs" className="hover:text-text">
-                    FAQ&apos;s
+                  <Link href="https://github.com/MEDomicsLab/MEDiml" className="hover:text-text">
+                    GitHub (Package)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/404" className="hover:text-text">
-                    404
+                  <Link href="https://github.com/MEDomicsLab/MEDiml-app" className="hover:text-text">
+                    GitHub (App)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-text">
-                    Contact
+                  <Link href="https://github.com/MEDomicsLab/MEDiml-app/issues" className="hover:text-text">
+                    Report Issues
                   </Link>
                 </li>
               </ul>

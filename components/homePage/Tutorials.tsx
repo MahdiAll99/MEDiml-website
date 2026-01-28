@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import {
   Rocket,
   Package,
   Laptop,
-  Server,
   BarChart3,
-  Globe2,
   ArrowRight,
+  FileImage,
+  Settings,
+  Brain,
 } from "lucide-react";
 
 type Tutorial = {
@@ -21,46 +21,45 @@ type Tutorial = {
 
 const tutorials: Tutorial[] = [
   {
-    title: "Install MEDfl (Python)",
-    description: "Set up a virtualenv and install MEDfl via pip in minutes.",
-    href: "/docs/tutorials/install-python",
+    title: "Install MEDiml (Python)",
+    description: "Set up a virtual environment and install MEDiml via pip in minutes.",
+    href: "https://medimage.readthedocs.io/en/latest/Installation.html",
     icon: <Package className="h-5 w-5" />,
   },
   {
-    title: "Run the Desktop App",
+    title: "Prepare your data",
     description:
-      "Install the desktop app on Windows, macOS, or Linux and connect to a server.",
-    href: "/docs/tutorials/desktop-app",
-    icon: <Laptop className="h-5 w-5" />,
+      "Prepare and organize your DICOM and NIfTI scans with segmentation masks.",
+    href: "https://medimage.readthedocs.io/en/latest/input_data.html",
+    icon: <FileImage className="h-5 w-5" />,
   },
   {
-    title: "Start a Federated Server",
+    title: "Configure Extraction",
     description:
-      "Spin up a FedAvg server with Strategy and track 10 rounds of training.",
-    href: "/docs/tutorials/start-server",
-    icon: <Server className="h-5 w-5" />,
+      "Set up IBSI-compliant radiomics feature extraction parameters.",
+    href: "https://medimage.readthedocs.io/en/latest/configurations_file.html",
+    icon: <Settings className="h-5 w-5" />,
   },
   {
-    title: "Connect a Client",
+    title: "Data Manager",
     description:
-      "Configure XGBoost params, join the federation, and report metrics.",
-    href: "/docs/tutorials/xgb-client",
+      "Convert your DICOM and NIfTI data into manageable binary files.",
+    href: "https://medimage.readthedocs.io/en/latest/tutorials.html#datamanager",
+    icon: <FileImage className="h-5 w-5" />,
+  },
+  {
+    title: "Batch Extractor",
+    description:
+      "Run batch extraction on individual scans or entire datasets.",
+    href: "https://medimage.readthedocs.io/en/latest/tutorials.html#batchextractor",
     icon: <BarChart3 className="h-5 w-5" />,
   },
-
   {
-    title: "Tailscale / LAN Setup",
+    title: "Machine Learning",
     description:
-      "Connect clients securely over Tailscale or on a local network.",
-    href: "/docs/tutorials/tailscale",
-    icon: <Globe2 className="h-5 w-5" />,
-  },
-  {
-    title: "Tailscale / LAN Setup",
-    description:
-      "Connect clients securely over Tailscale or on a local network.",
-    href: "/docs/tutorials/tailscale",
-    icon: <Globe2 className="h-5 w-5" />,
+      "Train and evaluate machine learning models using the extracted features.",
+    href: "https://medimage.readthedocs.io/en/latest/tutorials.html#learning",
+    icon: <Brain className="h-5 w-5" />,
   },
 ];
 
@@ -78,22 +77,13 @@ export default function TutorialsSection() {
               <span>Tutorials</span>
             </div>
             <h2 className="mt-4 text-3xl md:text-5xl font-extrabold leading-[1.05]">
-              Learn by building, step by step
+              Learn to use the Python library, step by step
             </h2>
             <p className="mt-3 max-w-2xl text-text/80">
-              Follow focused, practical guides to get MEDfl running — from pip
-              install to multi-site federated training.
+              Follow focused, practical guides to get MEDiml python library running — from pip
+              install to radiomics feature extraction and model training.
             </p>
           </div>
-
-          {/* Optional: "View all" */}
-          <Link
-            href="/docs/tutorials"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.06] px-3 py-2 text-sm hover:bg-white/[0.1] transition"
-          >
-            View all
-            <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
 
         {/* Grid of tutorial cards */}
@@ -120,23 +110,26 @@ function TutorialCard({ title, description, href, icon }: Tutorial) {
         <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.06] border border-white/10">
           {icon}
         </div>
-        <span className="uppercase tracking-wide">Tutorial</span>
       </div>
 
       <h3 className="text-lg md:text-xl font-semibold">{title}</h3>
       <p className="mt-2 text-sm text-text/75">{description}</p>
 
-      <Link
+      <a
         href={href}
+        target="_blank"
+        rel="noreferrer"
         className="mt-4 inline-flex items-center gap-2 hover:bg-primary text-sm rounded-lg px-3 bg-primary/10 py-2 border border-primary/20 text-text  transition"
         aria-label={`Open tutorial: ${title}`}
       >
         Open tutorial
         <ArrowRight className="h-4 w-4" />
-      </Link>
+      </a>
 
       {/* make whole card clickable (accessible) */}
-      <Link
+      <a
+        target="_blank"
+        rel="noreferrer"
         href={href}
         aria-hidden
         className="absolute inset-0"
