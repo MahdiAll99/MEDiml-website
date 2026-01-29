@@ -34,7 +34,7 @@ const steps: Step[] = [
     title: "Configure & Extract",
     body: "Set up radiomics feature extraction parameters and run feature extraction on single scans or entire datasets.",
     icon: <Settings className="h-7 w-7 text-secondary" />,
-    link: "https://medimage.readthedocs.io/",
+    link: "https://mediml.readthedocs.io/",
   },
   {
     title: "Train & Export",

@@ -98,7 +98,7 @@ extractor.export_to_csv("radiomics_features.csv")`;
           <div>
               <div className="flex gap-2 mt-8">
             <CTA
-              href="https://medimage.readthedocs.io/"
+              href="https://mediml.readthedocs.io/"
               icon={<BookOpen className="h-4 w-4 text-primary" />}
             >
               Docs
