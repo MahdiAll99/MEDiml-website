@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs",
+      "destination": "https://medimage.readthedocs.io/en/latest/"
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "https://medimage.readthedocs.io/en/latest/:path*"
+    }
+  ]
+}
