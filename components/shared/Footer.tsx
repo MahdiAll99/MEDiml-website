@@ -84,7 +84,7 @@ export default function FooterSection() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://medimage.readthedocs.io/" className="hover:text-text">
+                  <Link href="https://mediml.readthedocs.io/" className="hover:text-text">
                     Code Documentation
                   </Link>
                 </li>

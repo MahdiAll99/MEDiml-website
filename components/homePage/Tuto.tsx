@@ -122,11 +122,11 @@ const steps: Step[] = [
     alt: "Extraction configuration",
     color: "bg-yellow-400",
     icon: <Settings className="h-5 w-5 text-primary" />,
-    link: "https://medimage.readthedocs.io/",
+    link: "https://mediml.readthedocs.io/",
     actions: [
       {
         label: "",
-        href: "https://medimage.readthedocs.io/en/latest/configurations_file.html",
+        href: "https://mediml.readthedocs.io/en/latest/configurations_file.html",
         icon: <BookOpen className="h-4 w-4" />,
         variant: "ghost",
         aria: "Open code documentation",

@@ -23,42 +23,42 @@ const tutorials: Tutorial[] = [
   {
     title: "Install MEDiml (Python)",
     description: "Set up a virtual environment and install MEDiml via pip in minutes.",
-    href: "https://medimage.readthedocs.io/en/latest/Installation.html",
+    href: "https://mediml.readthedocs.io/en/latest/Installation.html",
     icon: <Package className="h-5 w-5" />,
   },
   {
     title: "Prepare your data",
     description:
       "Prepare and organize your DICOM and NIfTI scans with segmentation masks.",
-    href: "https://medimage.readthedocs.io/en/latest/input_data.html",
+    href: "https://mediml.readthedocs.io/en/latest/input_data.html",
     icon: <FileImage className="h-5 w-5" />,
   },
   {
     title: "Configure Extraction",
     description:
       "Set up IBSI-compliant radiomics feature extraction parameters.",
-    href: "https://medimage.readthedocs.io/en/latest/configurations_file.html",
+    href: "https://mediml.readthedocs.io/en/latest/configurations_file.html",
     icon: <Settings className="h-5 w-5" />,
   },
   {
     title: "Data Manager",
     description:
       "Convert your DICOM and NIfTI data into manageable binary files.",
-    href: "https://medimage.readthedocs.io/en/latest/tutorials.html#datamanager",
+    href: "https://mediml.readthedocs.io/en/latest/tutorials.html#datamanager",
     icon: <FileImage className="h-5 w-5" />,
   },
   {
     title: "Batch Extractor",
     description:
       "Run batch extraction on individual scans or entire datasets.",
-    href: "https://medimage.readthedocs.io/en/latest/tutorials.html#batchextractor",
+    href: "https://mediml.readthedocs.io/en/latest/tutorials.html#batchextractor",
     icon: <BarChart3 className="h-5 w-5" />,
   },
   {
     title: "Machine Learning",
     description:
       "Train and evaluate machine learning models using the extracted features.",
-    href: "https://medimage.readthedocs.io/en/latest/tutorials.html#learning",
+    href: "https://mediml.readthedocs.io/en/latest/tutorials.html#learning",
     icon: <Brain className="h-5 w-5" />,
   },
 ];
