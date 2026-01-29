@@ -56,8 +56,6 @@ function NavA({
 
 export default function Navbar({
   links = [
-    { label: "Docs", href: "https://medomicslab.gitbook.io/mediml-app-docs", external: true },
-    { label: "Package", href: "https://medimage.readthedocs.io/", external: true },
     { label: "Installation", href: "https://medomicslab.gitbook.io/mediml-app-docs/quick-start", external: true },
     { label: "Tutorials", href: "https://youtube.com/playlist?list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru", external: true },
     { label: "IBSI", href: "https://theibsi.github.io/", external: true },
@@ -71,7 +69,13 @@ export default function Navbar({
   },
 }: Props) {
   const [open, setOpen] = useState(false);
+  const [docsOpen, setDocsOpen] = useState(false);
   const pathname = usePathname();
+
+  const docsLinks: NavLink[] = [
+    { label: "MEDiml-app", href: "https://medomicslab.gitbook.io/mediml-app-docs", external: true },
+    { label: "MEDiml package", href: "https://medimage.readthedocs.io/", external: true },
+  ];
 
   const linkBase =
     "rounded px-1 py-1 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40";
@@ -99,6 +103,51 @@ export default function Navbar({
         {/* Desktop links */}
         <div className="hidden md:flex md:flex-1 md:items-center md:justify-center">
           <ul className="flex items-center gap-6 text-sm text-white/80">
+            <li className="relative">
+              <button
+                type="button"
+                className={[
+                  linkBase,
+                  "inline-flex items-center gap-1 text-text hover:text-blue-400",
+                ].join(" ")}
+                aria-haspopup="menu"
+                aria-expanded={docsOpen}
+                onClick={() => setDocsOpen((v) => !v)}
+              >
+                Docs
+                <svg
+                  className={`h-4 w-4 transition ${docsOpen ? "rotate-180" : "rotate-0"}`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              <div
+                className={`absolute left-0 mt-2 w-56 rounded-lg border border-white/10 bg-background/95 p-2 shadow-lg backdrop-blur ${
+                  docsOpen ? "block" : "hidden"
+                }`}
+                role="menu"
+              >
+                <ul className="flex flex-col gap-1">
+                  {docsLinks.map((doc) => (
+                    <li key={doc.href}>
+                      <NavA
+                        href={doc.href}
+                        external={doc.external}
+                        className="block rounded-md px-3 py-2 text-sm text-text transition hover:bg-white/5 hover:text-blue-400"
+                        onClick={() => setDocsOpen(false)}
+                      >
+                        {doc.label}
+                      </NavA>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
             {links.map((l) => {
               const active = isActive(l.href);
               return (
@@ -111,7 +160,7 @@ export default function Navbar({
                       active ? "text-white" : "text-text",
                       active
                         ? "underline underline-offset-8 decoration-primary/70"
-                        : "hover:text-white",
+                        : "hover:text-blue-400",
                     ].join(" ")}
                     aria-current={active ? "page" : undefined}
                   >
@@ -223,6 +272,26 @@ export default function Navbar({
               </li>
             );
           })}
+
+          <li className="mt-1">
+            <div className="px-3 py-1 text-xs uppercase tracking-wide text-white/60">
+              Docs
+            </div>
+            <ul className="flex flex-col gap-1">
+              {docsLinks.map((doc) => (
+                <li key={doc.href}>
+                  <NavA
+                    href={doc.href}
+                    external={doc.external}
+                    className="block rounded-md px-3 py-2 hover:bg-white/5"
+                    onClick={() => setOpen(false)}
+                  >
+                    {doc.label}
+                  </NavA>
+                </li>
+              ))}
+            </ul>
+          </li>
 
           <li className="mt-2">
             <NavA
