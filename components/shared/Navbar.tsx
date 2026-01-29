@@ -74,7 +74,7 @@ export default function Navbar({
 
   const docsLinks: NavLink[] = [
     { label: "MEDiml-app", href: "https://medomicslab.gitbook.io/mediml-app-docs", external: true },
-    { label: "MEDiml package", href: "https://medimage.readthedocs.io/", external: true },
+    { label: "MEDiml package", href: "https://mediml.readthedocs.io/", external: true },
   ];
 
   const linkBase =
