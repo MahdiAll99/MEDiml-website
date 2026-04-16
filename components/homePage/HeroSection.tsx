@@ -80,10 +80,11 @@ export default function HeroSection() {
         <div className="pb-15 relative flex flex-col justify-center gap-4 lg:col-span-6 xl:col-span-6">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             <span className="text-secondary relative">
-              <span className=" relative">Open the</span>
-              <span className=" relative text-red-primary"> World of</span>
+              <span className=" relative text-primary">MEDical Images</span>
+              <span className=" relative text-red-primary"> analysis</span>
             </span>{" "}
-            <span className="relative text-primary">Radiomics</span>
+            <span className="mt-3 md:text-xl">with</span>
+            <span className="text-secondary relative"> Machine Learning</span>
           </h1>
           <p className="mt-3 text-sm md:text-lg">
             An all-in-one open-source software designed to enhance synergy between computer scientists and clinical researchers in the field of radiomics. Transform medical images into insightful knowledge: explore, analyze, and extract with MEDiml.
