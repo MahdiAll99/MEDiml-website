@@ -8,6 +8,7 @@ import GetStartedSection from "@/components/homePage/GetStarted";
 import TutorialsSection from "@/components/homePage/Tutorials";
 import VideoTutorialsSection from "@/components/homePage/YoutubeVideos";
 import DiscoverMEDiml from "@/components/homePage/DiscoverMEDiml";
+import ScientificPaper from "@/components/homePage/ScientificPaper";
 
 
 const montserrat = Montserrat({
@@ -32,6 +33,7 @@ export default function Home() {
       /> */}
       <HeroSection />
       <DiscoverMEDiml />
+      <ScientificPaper />
       <ScrollTutorial/>
       {/* <OurTeam></OurTeam> */}
       {/* <WorkFlow/> */}
