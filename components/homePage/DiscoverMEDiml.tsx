@@ -49,7 +49,7 @@ const features = [
   },
 ];
 
-export default function DiscoverMEDimage() {
+export default function DiscoverMEDiml() {
   const reduced = useReducedMotion();
 
   return (
