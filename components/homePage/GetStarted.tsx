@@ -54,7 +54,10 @@ extractor.run()
 extractor.export_to_csv("radiomics_features.csv")`;
 
   return (
-    <section className="relative w-full  text-text">
+    <section
+      id="download"
+      className="relative w-full  text-text"
+    >
       {/* <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(800px_400px_at_80%_10%,rgba(59,130,246,0.08),transparent_60%),radial-gradient(600px_300px_at_10%_90%,rgba(6,182,212,0.06),transparent_50%)]" /> */}
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24">
         {/* Header */}
@@ -164,7 +167,7 @@ extractor.export_to_csv("radiomics_features.csv")`;
               <div className="grid grid-cols-1 gap-2">
                 <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-win.exe">Windows (.exe)</LinkBtn>
                 <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-mac.dmg">macOS (.dmg)</LinkBtn>
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-ubuntu.deb">Linux (.AppImage)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-ubuntu.deb">Linux (.deb)</LinkBtn>
               </div>
               <p className="mt-3 text-sm text-text/70">
                 Drag-and-drop interface for easy feature extraction and model training.
