@@ -13,7 +13,6 @@ import {
   Laptop,
   Rocket,
 } from "lucide-react";
-import Image from "next/image";
 
 export default function GetStartedSection() {
   const [tab, setTab] = React.useState<"python" | "desktop">("desktop");
@@ -37,21 +36,6 @@ med.init_from_nifti(
 # Extract radiomics features (IBSI-compliant)
 features = med.extract_features(params)
 print(features)`;
-
-  const batchExample = `from MEDiml.biomarkers.batch import BatchExtractor
-
-# Configure batch extraction
-extractor = BatchExtractor(
-    path_to_data="./data/scans/",
-    path_to_params="./extraction_params.json",
-    path_to_output="./results/"
-)
-
-# Run extraction on all scans
-extractor.run()
-
-# Export results to CSV
-extractor.export_to_csv("radiomics_features.csv")`;
 
   return (
     <section
