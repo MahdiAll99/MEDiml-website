@@ -16,7 +16,7 @@ import {
 import Image from "next/image";
 
 export default function GetStartedSection() {
-  const [tab, setTab] = React.useState<"python" | "desktop">("python");
+  const [tab, setTab] = React.useState<"python" | "desktop">("desktop");
 
   const pipCmd = `pip install MEDiml`;
 
@@ -83,16 +83,16 @@ extractor.export_to_csv("radiomics_features.csv")`;
         {/* Tabs */}
         <div className="mt-10 inline-flex rounded-2xl border border-foreground/10  bg-foreground/[0.04]   p-1">
           <TabButton
-            active={tab === "python"}
-            onClick={() => setTab("python")}
-            icon={<Package className="h-4 w-4" />}
-            label="Python package"
-          />
-          <TabButton
             active={tab === "desktop"}
             onClick={() => setTab("desktop")}
             icon={<Laptop className="h-4 w-4 " />}
             label="Desktop app"
+          />
+          <TabButton
+            active={tab === "python"}
+            onClick={() => setTab("python")}
+            icon={<Package className="h-4 w-4" />}
+            label="Python package"
           />
         </div>
 
@@ -192,7 +192,10 @@ extractor.export_to_csv("radiomics_features.csv")`;
                   Support for DICOM and NIfTI formats
                 </li>
                 <li>
-                  Tailored functionalities for model training
+                  Dose maps analysis
+                </li>
+                <li>
+                  End-to-end machine learning pipeline for model training and evaluation
                 </li>
               </ul>
             </Card>
