@@ -152,9 +152,9 @@ print(features)`;
           <div className="mt-8 grid lg:grid-cols-3 gap-6">
             <Card title="Download" icon={<Download className="h-5 w-5" />}>
               <div className="grid grid-cols-1 gap-2">
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/untagged-b585470cccddb4ba1e5e/MEDiml-app-0.9.0-win.exe">Windows (.exe)</LinkBtn>
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/untagged-b585470cccddb4ba1e5e/MEDiml-app-0.9.0-mac.dmg">macOS (.dmg)</LinkBtn>
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/untagged-b585470cccddb4ba1e5e/MEDiml-app-0.9.0-ubuntu.deb">Linux (.deb)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.9.0/MEDiml-app-0.9.0-win.exe">Windows (.exe)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.9.0/MEDiml-app-0.9.0-mac.dmg">macOS (.dmg)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.9.0/MEDiml-app-0.9.0-ubuntu.deb">Linux (.deb)</LinkBtn>
               </div>
               <div className="mt-4 rounded-xl border border-amber-400/40 bg-amber-400/10 p-3">
                 <div className="flex items-center gap-2 text-sm font-semibold text-amber-500">
