@@ -12,12 +12,15 @@ import {
   Server,
   Laptop,
   Rocket,
+  AlertTriangle,
 } from "lucide-react";
 
 export default function GetStartedSection() {
   const [tab, setTab] = React.useState<"python" | "desktop">("desktop");
 
   const pipCmd = `pip install MEDiml`;
+
+  const macCmd = `sudo xattr -cr /Applications/MEDiml-app.app`;
 
   const extractionExample = `from MEDiml import MEDiml
 import json
@@ -149,9 +152,22 @@ print(features)`;
           <div className="mt-8 grid lg:grid-cols-3 gap-6">
             <Card title="Download" icon={<Download className="h-5 w-5" />}>
               <div className="grid grid-cols-1 gap-2">
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-win.exe">Windows (.exe)</LinkBtn>
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-mac.dmg">macOS (.dmg)</LinkBtn>
-                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.0.1/MEDimage-app-0.0.1-ubuntu.deb">Linux (.deb)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/untagged-b585470cccddb4ba1e5e/MEDiml-app-0.9.0-win.exe">Windows (.exe)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/untagged-b585470cccddb4ba1e5e/MEDiml-app-0.9.0-mac.dmg">macOS (.dmg)</LinkBtn>
+                <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/untagged-b585470cccddb4ba1e5e/MEDiml-app-0.9.0-ubuntu.deb">Linux (.deb)</LinkBtn>
+              </div>
+              <div className="mt-4 rounded-xl border border-amber-400/40 bg-amber-400/10 p-3">
+                <div className="flex items-center gap-2 text-sm font-semibold text-amber-500">
+                  <AlertTriangle className="h-4 w-4 shrink-0" />
+                  <span>macOS users: required step</span>
+                </div>
+                <p className="mt-2 text-sm text-text/80">
+                  MEDiml-app is not notarized by Apple. After installing the app and
+                  before opening it, run this command in the Terminal:
+                </p>
+                <div className="mt-2">
+                  <CodeBlock lang="bash" code={macCmd} />
+                </div>
               </div>
               <p className="mt-3 text-sm text-text/70">
                 Drag-and-drop interface for easy feature extraction and model training.
