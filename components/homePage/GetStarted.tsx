@@ -150,7 +150,11 @@ print(features)`;
             </CTA>
           </div>
           <div className="mt-8 grid lg:grid-cols-3 gap-6">
-            <Card title="Download" icon={<Download className="h-5 w-5" />}>
+            <Card
+              title="Download"
+              icon={<Download className="h-5 w-5" />}
+              badge="v0.9.0 pre-release"
+            >
               <div className="grid grid-cols-1 gap-2">
                 <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.9.0/MEDiml-app-0.9.0-win.exe">Windows (.exe)</LinkBtn>
                 <LinkBtn href="https://github.com/MEDomicsLab/MEDiml-app/releases/download/v0.9.0/MEDiml-app-0.9.0-mac.dmg">macOS (.dmg)</LinkBtn>
@@ -278,10 +282,12 @@ function TabButton({
 function Card({
   title,
   icon,
+  badge,
   children,
 }: {
   title: string;
   icon: React.ReactNode;
+  badge?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -294,6 +300,11 @@ function Card({
           {icon}
         </div>
         <span className="uppercase tracking-wide">{title}</span>
+        {badge && (
+          <span className="ml-auto rounded-full border border-secondary/40 bg-secondary/10 px-2 py-0.5 text-xs font-medium text-secondary">
+            {badge}
+          </span>
+        )}
       </div>
       {children}
     </div>
