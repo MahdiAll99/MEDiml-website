@@ -33,7 +33,10 @@ export default function VideoTutorialsSection() {
     videos[0];
 
   return (
-    <section className="relative w-full bg-background text-text">
+    <section
+      id="tutorials"
+      className="relative scroll-mt-24 w-full bg-background text-text"
+    >
       <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
         {/* Header */}
         <div className="text-center">

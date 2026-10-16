@@ -57,8 +57,9 @@ function NavA({
 export default function Navbar({
   links = [
     { label: "Paper", href: "/#paper" },
+    { label: "Features", href: "/#features" },
     { label: "Download", href: "/#download"},
-    { label: "Tutorials", href: "https://youtube.com/playlist?list=PLEPy2VhC4-D5Eg-UxRyTtmUZRh-D5m_Ru", external: true },
+    { label: "Tutorials", href: "/#tutorials" },
     { label: "IBSI", href: "https://theibsi.github.io/", external: true },
     { label: "Our Lab", href: "https://medomicslab.com/", external: true },
   ],

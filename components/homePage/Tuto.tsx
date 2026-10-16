@@ -257,7 +257,10 @@ export default function ScrollTutorial() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative container mx-auto w-full text-text">
+    <section
+      id="features"
+      className="relative scroll-mt-24 container mx-auto w-full text-text"
+    >
       <div className="text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-text md:text-5xl">
           From Images to Insights
