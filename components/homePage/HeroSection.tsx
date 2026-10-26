@@ -80,7 +80,7 @@ export default function HeroSection() {
         <div className="pb-15 relative flex flex-col justify-center gap-4 lg:col-span-6 xl:col-span-6">
           <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl">
             <span className="text-secondary relative">
-              <span className=" relative text-primary">MEDical Images</span>
+              <span className=" relative text-primary">MEDical Image</span>
               <span className=" relative text-red-primary"> analysis</span>
             </span>{" "}
             <span className="mt-3 md:text-xl">with</span>
